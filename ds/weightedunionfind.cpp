@@ -64,14 +64,14 @@ struct WeightedUnionFind {
     }
     
     vector<vector<int>> groups() {
-        vector<vector<int>> member(n);
+        vector<vector<int>> buf(n);
         for (int i = 0; i < n; i++) {
-            member[leader(i)].emplace_back(i);
+            buf[leader(i)].emplace_back(i);
         }
         vector<vector<int>> res;
         for (int i = 0; i < n; i++) {
-            if (member[i].size() > 0) {
-                res.emplace_back(member[i]);
+            if (buf[i].size() > 0) {
+                res.emplace_back(buf[i]);
             }
         }
         return res;
