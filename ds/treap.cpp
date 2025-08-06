@@ -79,12 +79,12 @@ struct Treap {
         }
     }
     
-    void dump(Node *t) {
+    void debug(Node *t) {
         if (t) {
             push(t);
-            dump(t->l);
+            debug(t->l);
             cerr << t->val << " ";
-            dump(t->r);
+            debug(t->r);
         }
     }
     
@@ -159,8 +159,8 @@ struct Treap {
     
     int size() { return get_sz(root); }
     
-    void dump() {
-        dump(root);
+    void debug() {
+        debug(root);
         cerr << "\n";
     }
 };
