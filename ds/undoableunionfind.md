@@ -5,6 +5,7 @@
 ## 使い方
 - `merge`, `same`, `leader`, `size` : $O(\log N)$
 - `void undo()` : $O(1)$
+- `vector<vector<int>> groups()` : $O(N \log N)$
 
 ## 仕組み
 - 経路圧縮をしないということは, 1 回のマージで変わる部分は $par[aの根], par[bの根]$ の 2 箇所のみ.
