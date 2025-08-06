@@ -39,7 +39,7 @@ struct IntervalSet {
     }
     
     template <class ADD, class DEL>
-    void insert(S l, S r, T x, ADD add, DEL del) {
+    void insert(S l, S r, T x, const ADD &add, const DEL &del) {
         assert(l <= r);
         if (l == r) {
             return;
@@ -142,22 +142,22 @@ struct IntervalSet {
     }
     
     template <class ADD, class DEL>
-    void insert(S l, S r, ADD add, DEL del) {
-        insert(l, r, T(0), add, del);
+    void insert(S l, S r, const ADD &add, const DEL &del) {
+        insert(l, r, e, add, del);
     }
     
-    void insert(S l, S r, T x = 0) {
+    void insert(S l, S r, T x = e) {
         auto func = [](S l, S r, T x) {};
         insert(l, r, x, func, func);
     }
     
     void insert(S l) {
         auto func = [](S l, S r, T x) {};
-        insert(l, l + 1, T(0), func, func);
+        insert(l, l + 1, e, func, func);
     }
     
     template <class ADD, class DEL>
-    void erase(S l, S r, ADD add, DEL del) {
+    void erase(S l, S r, const ADD &add, const DEL &del) {
         assert(l <= r);
         if (l == r) {
             return;
@@ -215,9 +215,7 @@ struct IntervalSet {
         erase(l, l + 1, func, func);
     }
     
-    int size() {
-        return (int)s.size() - 2;
-    }
+    int size() const { return (int)s.size() - 2; }
     
     S mex(S x = 0) {
         auto it = prev(s.upper_bound({x, SINF, e}));
