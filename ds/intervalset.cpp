@@ -1,4 +1,4 @@
-template <class S, class T, T e = 0>
+template <class S, class T, T e>
 struct IntervalSet {
     public:
     struct Node {
