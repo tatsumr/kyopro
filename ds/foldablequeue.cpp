@@ -31,15 +31,11 @@ struct FoldableQueue {
         }
     }
     
-    int size() {
-        return l.size() + r.size();
-    }
+    int size() const { return l.size() + r.size(); }
     
-    bool empty() {
-        return l.size() == 0 && r.size() == 0;
-    }
+    bool empty() const { return l.size() == 0 && r.size() == 0; }
     
-    T prod() {
+    T prod() const {
         T sl = (l.empty() ? e() : l.top().second);
         T sr = (r.empty() ? e() : r.top().second);
         return op(sl, sr);
