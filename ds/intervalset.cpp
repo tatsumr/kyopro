@@ -5,8 +5,8 @@ struct IntervalSet {
         S l, r;
         T val;
         
-        bool operator<(const Node &a) const {
-            return (l != a.l ? l < a.l : r < a.r);
+        bool operator<(const Node &rhs) const {
+            return (l != rhs.l ? l < rhs.l : r < rhs.r);
         }
     };
     
