@@ -192,11 +192,11 @@ struct TreapSet {
         }
     }
     
-    void dump(Node *t) {
+    void debug(Node *t) {
         if (t) {
-            dump(t->l);
+            debug(t->l);
             cerr << t->val << " ";
-            dump(t->r);
+            debug(t->r);
         }
     }
     
@@ -234,8 +234,8 @@ struct TreapSet {
     
     bool empty() { return n == 0; }
     
-    void dump() { 
-        dump(root); 
+    void debug() { 
+        debug(root); 
         cerr << "\n";
     }
 };
