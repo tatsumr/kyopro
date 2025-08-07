@@ -7,7 +7,7 @@
 - 計算量は全部 $O(1)$ （push, pop はならし計算量）
 
 ## 使い方
-- `FoldableQueue<T, op, e> fq` : コンストラクタ
+- `FoldableQueue<T, op, e>` : コンストラクタ
   - 型 `T`
   - 二項演算 `T op(T, T)`
   - 単位元 `T e()`
