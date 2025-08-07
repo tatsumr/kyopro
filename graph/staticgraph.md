@@ -5,5 +5,8 @@
 
 ## 使い方
 - `StaticGraph<T> g(N)` : 辺のコストの型が `T`, 頂点数が `N` のグラフを作る.
+  - ただ宣言しただけで, `build` しないと使えない.
 - `void build()` : グラフを構築する.
   - これを呼んだ後に `add` を呼ぶと assert に引っかかる.
+- `g[v], g[v][i]` : vector<vector< Edge >> と同じように使える.
+  - `build` していない状態で呼ぶと assert に引っかかる.
