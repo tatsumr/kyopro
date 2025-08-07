@@ -16,3 +16,7 @@
   - 空のときに `pop` を呼び出すと assert に引っかかる.
 - `T prod()` : 要素全体の集約値を返す.
   - 空のときは `e()` を返す.
+
+## 仕組み
+stack 2 個で queue を作ることができる.
+[参考](https://snuke.hatenablog.com/entry/2018/09/18/135640)
