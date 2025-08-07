@@ -4,7 +4,7 @@
 - 一度構築したら, もう辺は追加できない（ゆえに StaticGraph）.
 
 ## 使い方
-- `StaticGraph<T> g(n)` : 辺のコストの型が `T`, 頂点数が `n` のグラフを作る.
+- `StaticGraph<T> g(int n)` : 辺のコストの型が `T`, 頂点数が `n` のグラフを作る.
   - ただ宣言しただけで, `build` しないと使えない.
 - ```
   (1) void add(int u, int v)
