@@ -4,8 +4,21 @@
 - 一度構築したら, もう辺は追加できない（ゆえに StaticGraph）.
 
 ## 使い方
-- `StaticGraph<T> g(N)` : 辺のコストの型が `T`, 頂点数が `N` のグラフを作る.
+- `StaticGraph<T> g(n)` : 辺のコストの型が `T`, 頂点数が `n` のグラフを作る.
   - ただ宣言しただけで, `build` しないと使えない.
+- ```
+  (1) void add(int u, int v)
+  (2) void add(int u, int v, T w)
+  (3) void add(int u, int u_, int v, int i)
+  (4) void add(int u, int u_, int v, T w, int i)
+  ```
+  - (1) 頂点 `u` から頂点 `v` に辺を張る.
+  - (2) 頂点 `u` から頂点 `v` に重さ `w` の辺を張る.
+  - (3) 頂点 `u = u_` から頂点 `v` に番号 `i` の辺を張る.
+  - (4) 頂点 `u = u_` から頂点 `v` に重さ `w`, 番号 `i` の辺を張る.
+  - `build` した後にこれを呼ぶと assert に引っかかる.
+  - 頂点番号が 0 以上 `n` 未満じゃないと assert に引っかかる.
+  - (3), (4) で `u != u_` だと assert に引っかかる.
 - `void build()` : グラフを構築する.
   - これを呼んだ後に `add` を呼ぶと assert に引っかかる.
 - `g[v], g[v][i]` : vector<vector< Edge >> と同じように使える.
