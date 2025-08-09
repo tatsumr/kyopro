@@ -122,9 +122,7 @@ struct FunctionalGraph {
         return cycles[id[v]];
     }
     
-    vector<vector<Edge<T>>> all_cycles() const {
-        return cycles;
-    }
+    vector<vector<Edge<T>>> all_cycles() const { return cycles; }
     
     int next(int v, long long k) {
         assert(0 <= v && v < n);
