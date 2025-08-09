@@ -6,6 +6,19 @@ struct FunctionalGraph {
     vector<int> roots, arrive, len, id;
     vector<vector<Edge<T>>> cycles;
     vector<vector<int>> dp;
+
+    void next_init() {
+        dp.resize(n, vector<int>(60));
+        for (int v = 0; v < n; v++) {
+            int nv = g[v][0].to;
+            dp[v][0] = nv;
+        }
+        for (int j = 1; j < 60; j++) {
+            for (int i = 0; i < n; i++) {
+                dp[i][j] = dp[dp[i][j - 1]][j - 1];
+            }
+        }
+    }
     
     public:
     FunctionalGraph() {}
@@ -113,19 +126,6 @@ struct FunctionalGraph {
     
     vector<vector<Edge<T>>> all_cycles() const {
         return cycles;
-    }
-    
-    void next_init() {
-        dp.resize(n, vector<int>(60));
-        for (int v = 0; v < n; v++) {
-            int nv = g[v][0].to;
-            dp[v][0] = nv;
-        }
-        for (int j = 1; j < 60; j++) {
-            for (int i = 0; i < n; i++) {
-                dp[i][j] = dp[dp[i][j - 1]][j - 1];
-            }
-        }
     }
     
     int next(int v, long long k) {
