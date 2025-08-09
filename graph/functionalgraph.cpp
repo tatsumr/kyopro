@@ -116,9 +116,6 @@ struct FunctionalGraph {
     }
     
     void next_init() {
-        if (dp.size() > 0) {
-            return;
-        }
         dp.resize(n, vector<int>(60));
         for (int v = 0; v < n; v++) {
             int nv = g[v][0].to;
@@ -134,6 +131,9 @@ struct FunctionalGraph {
     int next(int v, long long k) {
         assert(0 <= v && v < n);
         assert(0 <= k && k <= 1e18);
+        if (dp.size() != n) {
+            next_init();
+        }
         int res = v;
         for (long long j = 0; j < 60; j++) {
             if (k & (1LL << j)) {
