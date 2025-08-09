@@ -46,20 +46,11 @@ struct StaticGraph {
         assert(0 <= v && v < n);
         es.emplace_back(u, (Edge<T>){v, w});
     }
-    
-    void add(int u, int u_, int v, int i) {
-        assert(!built);
-        assert(0 <= u && u < n);
-        assert(u == u_);
-        assert(0 <= v && v < n);
-        es.emplace_back(u, (Edge<T>){u, v, i});
-    }
-    
-    void add(int u, int u_, int v, T w, int i) {
+
+    void add(int u, int v, T w, int i) {
         assert(!built);
         assert(0 <= u && u < n); 
         assert(0 <= v && v < n);
-        assert(u == u_);
         es.emplace_back(u, (Edge<T>){u, v, w, i});
     }
     
