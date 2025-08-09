@@ -72,9 +72,7 @@ struct StaticGraph {
         built = true;
     }
     
-    int size() const { 
-        return n; 
-    }
+    int size() const { return n; }
     
     Es<typename vector<Edge<T>>::iterator> operator[](int v) {
         assert(built);
