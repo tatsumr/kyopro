@@ -100,9 +100,7 @@ struct FunctionalGraph {
         }
     }
     
-    int cc() const {
-        return cnt;
-    }
+    int cc() const { return cnt; }
     
     int root(int v) const {
         assert(0 <= v && v < n);
@@ -130,7 +128,7 @@ struct FunctionalGraph {
     
     int next(int v, long long k) {
         assert(0 <= v && v < n);
-        assert(0 <= k && k <= 1e18);
+        assert(0 <= k && k < (1LL << 60));
         if (dp.size() != n) {
             next_init();
         }
