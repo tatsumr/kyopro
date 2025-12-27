@@ -1,6 +1,6 @@
 ## 行列 (Matrix)
 
 ## 実装について
-[これ](https://judge.yosupo.jp/submission/340591) が verify & メモ
+最新 verify : https://judge.yosupo.jp/submission/340826
 
 競プロは N * M で表しがちだけど, M * N で実装していることに注意
