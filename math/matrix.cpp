@@ -4,11 +4,11 @@ struct Matrix {
     int m, n;
     
     Matrix() {}
-    Matrix(int _m, int _n) : m(_m), n(_n), a(_m, vector<T>(_n)) {}
+    Matrix(int _m, int _n) : m(_m), n(_n), a(_m, vector<T>(_n)) {}  // 縦 m * 横 n
     Matrix(int n) : Matrix<T>(n, n) {}
     
-    vector<T> &operator[](int k) { return a[k]; }             
-    const vector<T> &operator[](int k) const { return a[k]; }
+    vector<T> &operator[](int k) { return a[k]; }                   // 書き換えられるように
+    const vector<T> &operator[](int k) const { return a[k]; }       // 読み取れるように
     
     int height() const { return m; }
     int width() const { return n; }
@@ -70,35 +70,39 @@ struct Matrix {
     Matrix operator^(const long long k) const { return (Matrix(*this) ^= k); }
 };
 
+// 掃き出し法
+// {ランク, 行列式} を返す
 template <class T>
-int GaussJordan(Matrix<T> &a) {
+pair<int, T> GaussJordan(Matrix<T> &a) {
     int m = a.height(), n = a.width();
     int rank = 0;
-    for (int col = 0; col < n; col++) {         
-        int piv = -1;                           
-        for (int row = rank; row < m; row++) {
-            if (a[row][col] != 0) {
-                piv = row;
+    T det = 1;
+    for (int j = 0; j < n; j++) {                   // 掃き出したい列
+        int piv = -1;                               // 掃き出す基準にする行
+        for (int i = rank; i < m; i++) {
+            if (a[i][j] != 0) {
+                piv = i;
                 break;
             }
         }
-        if (piv == -1) {
-            continue;
+        if (piv == -1) {                            // その列を掃き出せない (その列が全部 0)
+            det = 0;                                // -> a は正則でない
+            continue;                               // -> 行列式が 0
+        }                                       
+        if (rank != piv) {
+            det = -det;                             // 行の入れ替え. 入れ替えると det は -1 倍
+            swap(a[rank], a[piv]);
         }
-        T val = a[piv][col];
-        for (int col2 = 0; col2 < n; col2++) {  
-            a[piv][col2] /= val;
-        }
-        swap(a[piv], a[rank]);                  
-        for (int row = 0; row < m; row++) {     
-            if (row != rank && a[row][col] != 0) {
-                T val = a[row][col];
-                for (int col2 = 0; col2 < n; col2++) {
-                    a[row][col2] -= a[rank][col2] * val;
+        det *= a[rank][j];                          // 次数を下げる公式 (第 1 列の 2 番目以降の成分が全部 0 のとき)
+        for (int i = rank + 1; i < m; i++) {        // 第 j 列の掃き出し. rank と det を求める場合は piv 以上の行は実際に掃き出す必要はない
+            if (a[i][j] != 0) {
+                T val = a[i][j] / a[rank][j];
+                for (int j2 = 0; j2 < n; j2++) {
+                    a[i][j2] -= a[rank][j2] * val;  // 第 i 行に第 rank 行 * -val を足す行基本変形. det は変わらない
                 }
             }
         }
         rank++;
     }
-    return rank;
+    return {rank, det};
 }
