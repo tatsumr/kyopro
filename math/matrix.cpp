@@ -78,7 +78,7 @@ struct Matrix {
 };
 
 // 掃き出し法
-// {ランク, 行列式} を返す
+// {rank, 行列式} を返す
 template <class T>
 pair<int, T> GaussJordan(Matrix<T> &a, bool LE = false) {
     int m = a.height(), n = a.width();
@@ -159,4 +159,51 @@ vector<vector<T>> LinearEquation(Matrix<T> a, vector<T> b) {
         }
     }
     return res;
+}
+
+// 逆行列
+// {rank, 逆行列} を返す. rank != n のときは正則でない
+// A^-1 は, A の階段行列を求めるときの変形を I に行うと求まる
+template <class T>
+pair<int, Matrix<T>> InverseMatrix(Matrix<T> a) {
+    assert(a.height() == a.width());
+    int n = a.height();
+    for (int i = 0; i < n; i++) {           // 単位行列をくっつける
+        for (int j = 0; j < n; j++) {
+            a[i].emplace_back(i == j);
+        }
+    }
+    int rank = 0;
+    for (int j = 0; j < n; j++) {           // 左 n 列だけ掃き出す
+        int piv = -1;
+        for (int i = rank; i < n; i++) {
+            if (a[i][j] != 0) {
+                piv = i;
+                break;
+            }
+        }
+        if (piv == -1) { continue; }
+        swap(a[rank], a[piv]);
+        T val = a[rank][j];
+        for (int j2 = j; j2 < 2 * n; j2++) {
+            a[rank][j2] /= val;
+        }
+        for (int i = 0; i < n; i++) {
+            if (i == rank) { continue; }
+            if (a[i][j] != 0) {
+                T val = a[i][j];
+                for (int j2 = 0; j2 < 2 * n; j2++) {
+                    a[i][j2] -= a[rank][j2] * val;
+                }
+            }
+        }
+        rank++;
+    }
+    Matrix<T> res(n);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            res[i][j] = a[i][j + n];
+        }
+    }
+    return {rank, res};
 }
