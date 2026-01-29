@@ -1,6 +1,6 @@
 # Rolling Hash
 
-## Rolling Hash とは？(簡単に)
+## Rolling Hash の雑な説明
 
 文字列をハッシュ化する. 具体的には, 長さ $n$ の文字列 $s_0s_1...s_{n-1}$ のハッシュは基数 $b$ を用いて
 
