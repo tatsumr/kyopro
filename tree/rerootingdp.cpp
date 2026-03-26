@@ -65,7 +65,7 @@ struct RerootingDP {
             for (int i = 0; i < (int)g[v].size(); i++) {
                 cout << v + 1 << "->" << g[v][i].to + 1 << " : ";
                 cout << dp[v][i];
-                cout << endl;
+                cout << "\n";
             }
         }
     }
