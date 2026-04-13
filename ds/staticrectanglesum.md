@@ -21,3 +21,9 @@ xy平面上に $N$ 個の点がある。以下のクエリに答えよ:
 
 ## クエリの途中で点の追加がある場合
 領域木や二次元 Fenwick Tree を使おう.
+
+## 使用例
+### [ABC453-E](https://atcoder.jp/contests/abc453/tasks/abc453_e) の部分問題 [提出](https://atcoder.jp/contests/abc453/submissions/74936804)
+$N$ 個の区間がある。 $x$ と $y$ が与えられるので, 「 $x$ と $y$ をともに含む区間の個数」「 $x$ のみを含む区間の個数」などを求めよ.
+- 区間 $[l, r)$ を点 $(x, y)$ とする
+- 例えばともに含む区間の個数は, $L~\leq min(x,~y), max(x,~y) \leq R$ なので $[-\infty, min(x,~y)+1) \times [max(x,~y),\infty)$ の領域.
