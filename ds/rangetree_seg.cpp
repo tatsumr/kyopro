@@ -57,8 +57,8 @@ struct RangeTree {
             yxs[i + n].emplace_back(ps[i].second, ps[i].first);
         }
         for (int i = n - 1; i > 0; i--) {
-            auto l = yxs[i * 2];
-            auto r = yxs[i * 2 + 1];
+            auto& l = yxs[i * 2];
+            auto& r = yxs[i * 2 + 1];
             merge(l.begin(), l.end(), r.begin(), r.end(), back_inserter(yxs[i]));
             yxs[i].erase(unique(yxs[i].begin(), yxs[i].end()), yxs[i].end());
         }
