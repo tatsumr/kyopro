@@ -1,7 +1,7 @@
 #include <atcoder/fenwicktree>
 
 template <class T, class C = int>
-struct FenwickTree2D {
+struct RangeTree {
   private:
     using P = pair<C, C>;
     int n;
@@ -23,7 +23,7 @@ struct FenwickTree2D {
     }
 
   public:
-    FenwickTree2D() {}
+    RangeTree() {}
 
     void add_point(C x, C y) {
         ps.emplace_back(x, y);
