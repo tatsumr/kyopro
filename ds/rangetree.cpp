@@ -1,6 +1,8 @@
+#include <atcoder/fenwicktree>
+
 template <class T, class C = int>
 struct FenwickTree2D {
-    private:
+  private:
     using P = pair<C, C>;
     int n;
     C MN = numeric_limits<C>::min();
@@ -20,7 +22,7 @@ struct FenwickTree2D {
         return fws[v].sum(il, ir);
     }
 
-    public:
+  public:
     FenwickTree2D() {}
 
     void add_point(C x, C y) {
