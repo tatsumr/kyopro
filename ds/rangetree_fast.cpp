@@ -1,6 +1,7 @@
 // 演算が和のとき
 // 高速化のために添字を予め管理することで二分探索を省略、Fenwick Tree を一本の配列にする、などをしている
 // 点の数が多そうなら LG=20 を変更しよう
+// 実験の歴史...https://atcoder.jp/contests/awc0082/submissions/me, Point Add Rectangle Sum
 
 template <class T, class C = int>
 struct RangeTree {
