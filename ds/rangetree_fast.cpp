@@ -7,13 +7,30 @@
 template <class T, class C = int>
 struct RangeTree {
   private:
-    using P = pair<C, C>;
+    struct Point {
+        C x, y;
+        int id;
+        
+        Point() {}
+        Point(C _x, C _y, int _id = -1) : x(_x), y(_y), id(_id) {}
+
+        bool operator<(const Point& rhs) const {
+            if (x != rhs.x) return x < rhs.x;
+            return y < rhs.y;
+        }
+        bool operator==(const Point& rhs) const {
+            return x == rhs.x && y == rhs.y;
+        }
+        bool operator<=(const Point& rhs) const {
+            if (x != rhs.x) return x < rhs.x;
+            return y <= rhs.y;
+        }
+    };
     int n;
-    C MN = numeric_limits<C>::min();
-    vector<P> ps;
-    vector<vector<P>> yxs;
+    vector<Point> ps, yxs;
     
     static constexpr int LG = 20;
+    static constexpr int MN = -1001001001;
     vector<int> idx, cur;
 
     vector<T> fws;
@@ -29,9 +46,8 @@ struct RangeTree {
         }
     }
 
-    T __sum(int v, int r) {
+    T __sum(int v, int r, int offset) {
         T res = 0;
-        int offset = start[v - 1];
         while (r > 0) {
             res += fws[r - 1 + offset];
             r -= r & -r;
@@ -40,72 +56,85 @@ struct RangeTree {
     }
 
     T _sum(int v, C yl, C yr) {
-        int il = lower_bound(yxs[v].begin(), yxs[v].end(), P{yl, MN}) - yxs[v].begin();
-        int ir = lower_bound(yxs[v].begin(), yxs[v].end(), P{yr, MN}) - yxs[v].begin();
-        return __sum(v, ir) - __sum(v, il);
+        int st = start[v - 1], ed = start[v];
+        int il = lower_bound(yxs.begin() + st, yxs.begin() + ed, Point(yl, MN)) - yxs.begin();
+        int ir = lower_bound(yxs.begin() + st, yxs.begin() + ed, Point(yr, MN)) - yxs.begin();
+        return __sum(v, ir - st, st) - __sum(v, il - st, st);
     }
 
   public:
     RangeTree() {}
 
     void add_point(C x, C y) {
-        ps.emplace_back(x, y);
+        ps.emplace_back(Point(x, y));
     }
 
     void build() {
         sort(ps.begin(), ps.end());
         ps.erase(unique(ps.begin(), ps.end()), ps.end());
         n = ps.size();
-        yxs.resize(n * 2);
+        for (int i = 0; i < n; i++) {
+            ps[i].id = i;
+        }
+
+        start.resize(n * 2, 1);
+        start[0] = 0;
+        for (int i = n - 1; i > 0; i--) {
+            start[i] = start[i * 2] + start[i * 2 + 1];
+        }
+        for (int i = 2; i < n * 2; i++) {
+            start[i] += start[i - 1];
+        }
+        int len = start.back();
+
+        yxs.resize(len);
+        for (int i = 0; i < n; i++) {
+            int offset = start[i + n - 1];
+            Point& p = ps[i];
+            yxs[offset] = Point(p.y, p.x, p.id);
+        }
+
         idx.resize(n * LG, 0);
         cur.resize(n, 1);
-        for (int i = 0; i < n; i++) {
-            yxs[i + n].emplace_back(ps[i].second, ps[i].first);
-        }
         for (int i = n - 1; i > 0; i--) {
-            auto& l = yxs[i * 2];
-            auto& r = yxs[i * 2 + 1];
-            int ls = l.size(), rs = r.size();
-            int il = 0, ir = 0;
+            int il = start[i * 2 - 1], ir = start[i * 2];
+            int ls = ir, rs = start[i * 2 + 1];
             int sz = 0;
-            auto push = [&](const int x, const int y) -> void {
-                yxs[i].emplace_back(y, x);
-                int id = lower_bound(ps.begin(), ps.end(), P{x, y}) - ps.begin();
+
+            int now = start[i - 1];
+
+            auto push = [&](const Point& p) -> void {
+                yxs[now] = p;
+                now++;
+                int id = p.id;
                 int& j = cur[id];
                 idx[id * LG + j] = sz++;
                 j++;
             };
             while (il < ls || ir < rs) {
                 if (il == ls) {
-                    auto [y, x] = r[ir++];
-                    push(x, y);
+                    auto& p = yxs[ir++];
+                    push(p);
                 } else if (ir == rs) {
-                    auto [y, x] = l[il++];
-                    push(x, y);
+                    auto& p = yxs[il++];
+                    push(p);
                 } else {
-                    if (l[il] <= r[ir]) {
-                        auto [y, x] = l[il++];
-                        push(x, y);
+                    if (yxs[il] <= yxs[ir]) {
+                        auto& p = yxs[il++];
+                        push(p);
                     } else {
-                        auto [y, x] = r[ir++];
-                        push(x, y);
+                        auto& p = yxs[ir++];
+                        push(p);
                     }
                 }
             }
         }
-        start.resize(n * 2, 1);
-        for (int i = n - 1; i > 0; i--) {
-            start[i] = start[i * 2] + start[i * 2 + 1];
-        }
-        for (int i = 1; i < n * 2; i++) {
-            start[i] += start[i - 1];
-        }
-        fws.resize(start.back(), 0);
+        fws.resize(len, 0);
     }
 
     void add(C x, C y, T val) {
-        int id = lower_bound(ps.begin(), ps.end(), P{x, y}) - ps.begin();
-        assert(id < n && ps[id].first == x && ps[id].second == y);
+        int id = lower_bound(ps.begin(), ps.end(), Point(x, y)) - ps.begin();
+        assert(id < n && ps[id].x == x && ps[id].y == y);
         int j = id * LG;
         for (int i = id + n; i; i >>= 1) {
             _add(i, idx[j++], val);
@@ -115,8 +144,8 @@ struct RangeTree {
     T sum(C xl, C xr, C yl, C yr) {
         assert(xl <= xr);
         assert(yl <= yr);
-        int l = lower_bound(ps.begin(), ps.end(), P{xl, MN}) - ps.begin();
-        int r = lower_bound(ps.begin(), ps.end(), P{xr, MN}) - ps.begin();
+        int l = lower_bound(ps.begin(), ps.end(), Point(xl, MN)) - ps.begin();
+        int r = lower_bound(ps.begin(), ps.end(), Point(xr, MN)) - ps.begin();
         l += n, r += n;
         T res = 0;
         while (l < r) {
