@@ -1,6 +1,7 @@
 // 演算が和のとき専用
 // 添字を予め管理することで add の二分探索を省略、Fenwick Tree や fws を一本の配列にする、などをしている
 // 点の数が多そうなら LG=20 を変更しよう
+// めっちゃ小さい数が登場するなら MN=-1001001001 を変更しよう
 // 実験の歴史:
 //   https://atcoder.jp/contests/awc0082/submissions/me
 //   Point Add Rectangle Sum (Library Checker)
