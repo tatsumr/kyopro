@@ -48,7 +48,7 @@ struct RangeTree {
         }
     }
 
-    T __sum(int v, int r, int offset) {
+    T __sum(int r, int offset) {
         T res = 0;
         while (r > 0) {
             res += fws[r - 1 + offset];
