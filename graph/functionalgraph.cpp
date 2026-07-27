@@ -28,7 +28,7 @@ struct FunctionalGraph {
             int nv = g[v][0].to;
             T c = g[v][0].cost;
             int i = g[v][0].idx;
-            gg.add(nv, nv, v, c, i);
+            gg.add(nv, v, c, i);
         }
         gg.build();
         vector<int> deg(n);
