@@ -7,7 +7,6 @@ struct Edge {
     Edge() {}
     Edge(int to_) : to(to_) {}
     Edge(int to_, T cost_) : to(to_), cost(cost_) {}
-    Edge(int from_, int to_, int idx_) : from(from_), to(to_), idx(idx_) {}
     Edge(int from_, int to_, T cost_, int idx_) : from(from_), to(to_), cost(cost_), idx(idx_) {}
 };
 
