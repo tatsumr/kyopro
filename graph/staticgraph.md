@@ -1,4 +1,4 @@
-# StaticGraph
+# Static Graph
 
 ## 概要
 - グラフ。CSR 形式にしているので、`vector<vector<Edge>>`より高速。
