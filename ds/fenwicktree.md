@@ -14,4 +14,4 @@ T sum(int l, int r)
 ```cpp
 int lower_bound(T w)
 ```
-`sum(0, i)`が`w`以上となる最小の`i`を返す。`sum(0, n)`が`w`未満の場合は`n+1`を返す。
+`sum(0, i)` が `w` 以上となる最小の `i` を返す。`sum(0, n)` が `w` 未満の場合は `n+1` を返す。
