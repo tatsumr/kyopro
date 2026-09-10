@@ -5,6 +5,7 @@
 ## 使い方
 - `merge`, `same`, `leader`, `size` : $O(\log N)$ （ $N$ は頂点数）
 - `void undo()` : $O(1)$
+  - 取り消すべきマージ操作がなかった場合は何も起こらない（エラーにはならない）.
 - `vector<vector<int>> groups()` : $O(N \log N)$
 
 ## 仕組み
