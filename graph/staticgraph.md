@@ -3,7 +3,7 @@
 ## 概要
 - グラフ。CSR 形式にしているので、`vector<vector<Edge>>`より高速。
   [参考（11枚目）](https://drive.google.com/file/d/1JwPJ8OErgCqO_MjAYijNgS-fJ7AFVa8Q/view)
-- 一度構築したら、もう辺は追加できない（ゆえに StaticGraph）。
+- 一度構築したら、もう辺は追加できない（ゆえに "Static"Graph）。
 
 ## 使い方
 ### コンストラクタ
