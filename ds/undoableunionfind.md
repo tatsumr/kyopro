@@ -1,12 +1,29 @@
+# Undo-able Union Find
+
 ## 概要
 - Undo 可能 Union Find
-- 経路圧縮をしない代わりに, 最新のマージ操作を取り消すことができる（その分, 計算量は通常の Union Find より悪化する）
+- 経路圧縮をしない代わりに、最新のマージ操作を取り消すことができる（その分計算量は通常の Union Find より悪化する）。
 
 ## 使い方
-- `merge`, `same`, `leader`, `size` : $O(\log N)$ （ $N$ は頂点数）
-- `void undo()` : $O(1)$
-  - 取り消すべきマージ操作がなかった場合は何も起こらない（エラーにはならない）.
-- `vector<vector<int>> groups()` : $O(N \log N)$
+### merge, same, leader, size, groups
+```cpp
+int merge(int a, int b)
+bool same(int a, int b)
+int leader(int a)
+int size(int a)
+vector<vector<int>> groups()
+```
+通常の Union Find と同じ。
+#### 計算量
+`groups` のみ $O(N \log N)$ 、それ以外 $O(\log N)$
+
+### undo
+```cpp
+void undo()
+```
+最新の `merge` 操作を取り消す。取り消すべき `merge` 操作がなかった場合は何も起こらない（エラーにはならない）。
+#### 計算量
+$O(1)$
 
 ## 仕組み
 - `merge` 呼び出しによって変更が起こる部分の, 変更前の状態を stack に保存し, `undo` が呼ばれたら stack からそれを取り出して変更前の状態に戻す.
