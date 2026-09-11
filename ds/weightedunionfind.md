@@ -17,3 +17,4 @@ T diff(int x, int y)
 (`y` の重さ - `x` の重さ) を返す。
 
 ## 仕組み
+![WeightedUnionFind](https://github.com/user-attachments/files/32084695/default.pdf)
