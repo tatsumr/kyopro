@@ -18,3 +18,4 @@ T diff(int x, int y)
 
 ## 仕組み
 ![WeightedUnionFind](https://github.com/user-attachments/files/32084695/default.pdf)
+![test](https://github.com/user-attachments/assets/39e94729-a2a6-4c3f-8ac8-1c3e4711cb83" /)
