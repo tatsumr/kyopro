@@ -103,41 +103,24 @@ struct IntervalSet {
         s.insert({l, r, x});
         
         adjust:
+        auto deletion = [&](auto it) {
+            del(it->l, it->r, it->val);
+            s.erase(it);
+        };
+        auto merge = [&](auto a, auto b) {
+            S L = a->l, R = b->r;
+            T X = a->val;
+            auto hint = next(b);
+            deletion(a);
+            deletion(b);
+            add(L, R, X);
+            return s.emplace_hint(hint, Node{L, R, X});
+        };
         it = s.lower_bound({l, r, x});
         auto pit = prev(it);
         auto nit = next(it);
-        if (pit->r == it->l && pit->val == it->val) {
-            if (it->r == nit->l && it->val == nit->val) {
-                S L = pit->l, R = nit->r;
-                T X = it->val;
-                del(pit->l, pit->r, pit->val);
-                s.erase(pit);
-                del(it->l, it->r, it->val);
-                s.erase(it);
-                del(nit->l, nit->r, nit->val);
-                s.erase(nit);
-                add(L, R, X);
-                s.insert({L, R, X});
-            } else {
-                S L = pit->l, R = it->r;
-                T X = it->val;
-                del(pit->l, pit->r, pit->val);
-                s.erase(pit);
-                del(it->l, it->r, it->val);
-                s.erase(it);
-                add(L, R, X);
-                s.insert({L, R, X});
-            }
-        } else if (it->r == nit->l && it->val == nit->val) {
-            S L = it->l, R = nit->r;
-            T X = it->val;
-            del(it->l, it->r, it->val);
-            s.erase(it);
-            del(nit->l, nit->r, nit->val);
-            s.erase(nit);
-            add(L, R, X);
-            s.insert({L, R, X});
-        }
+        if (pit->r == it->l && pit->val == it->val) it = merge(pit, it);
+        if (it->r == nit->l && it->val == nit->val) it = merge(it, nit);
         return;
     }
     
