@@ -202,11 +202,7 @@ struct IntervalSet {
     
     S mex(S x = 0) {
         auto it = prev(s.upper_bound({x, SINF, e}));
-        if (it->l <= x && x < it->r) {
-            return it->r;
-        } else {
-            return x;
-        }
+        return ((it->l <= x && x < it->r) ? it->r : x);
     }
     
     void debug() {
