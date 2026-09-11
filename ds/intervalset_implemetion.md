@@ -1,4 +1,4 @@
-# Interval Set の実装の解説
+# Interval Set の実装
 
 ## insert
 `insert(l, r, x)` のアルゴリズムを解説する。
