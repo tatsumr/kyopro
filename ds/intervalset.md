@@ -1,7 +1,7 @@
 # Interval Set
 
 ## 概要
-区間と値を set で管理するデータ構造。コードの中身についての説明は[こちら](https://github.com/tatsumr/kyopro/blob/main/ds/intervalset_implemetion.md)
+区間と値を set で管理するデータ構造。コードの中身についての説明は [intervalset_implemention.md](https://github.com/tatsumr/kyopro/blob/main/ds/intervalset_implemetion.md) に書いた。
 
 ## 使い方
 ### コンストラクタ
