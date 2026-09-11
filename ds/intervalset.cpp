@@ -213,7 +213,7 @@ struct IntervalSet {
                 cerr << " ";
             }
         }
-        cerr << endl;
+        cerr << "\n";
     }
     
     private:
