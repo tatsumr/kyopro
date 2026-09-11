@@ -15,3 +15,5 @@ int merge(int x, int y, T z)
 T diff(int x, int y)
 ```
 (`y` の重さ - `x` の重さ) を返す。
+
+## 仕組み
