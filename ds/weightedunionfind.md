@@ -1,6 +1,17 @@
+# Weighted Union Find
+
 ## 概要
 重み（ポテンシャル）付き Union Find
 
 ## 使い方
-- `int merge(x, y, z)`: $y$ の重さ = $x$ の重さ + $w$ となるように $x$ と $y$ をマージ. マージ後の根を返す.
-- `T diff(x, y)` : $y$ の重さ - $x$ の重さ を返す.
+### merge
+```cpp
+int merge(int x, int y, T z)
+```
+`y` の重さ = `x` の重さ + `w` となるように `x` と `y` をマージする。マージ後の根を返す。
+
+### diff
+```cpp
+T diff(int x, int y)
+```
+(`y` の重さ - `x` の重さ) を返す。
