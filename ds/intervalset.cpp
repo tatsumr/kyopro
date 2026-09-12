@@ -21,7 +21,6 @@ struct IntervalSet {
         auto it = prev(s.upper_bound({l, SINF, e}));
         return (it->l <= l && r <= it->r);
     }
-    
     bool covered(S x) { return covered(x, x + 1); }
     
     // [l, r) を含む区間 なければ [l, r) のすぐ左の区間
@@ -29,7 +28,6 @@ struct IntervalSet {
         assert(l < r);
         return prev(s.upper_bound({l, SINF, e}));
     }
-    
     auto get(S x) { return get(x, x + 1); }
     
     template <class ADD, class DEL>
