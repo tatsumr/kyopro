@@ -82,7 +82,7 @@ struct IntervalSet {
             del_node(a, del);
             del_node(b, del);
             add(L, R, X);
-            return s.emplace_hint(hint, Node{L, R, X});
+            return s.emplace_hint(hint, {L, R, X});
         };
         it = s.lower_bound({l, r, x});
         auto pit = prev(it);
