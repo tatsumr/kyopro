@@ -1,5 +1,5 @@
 # Interval Set の実装
-[Interval Set](https://github.com/tatsumr/kyopro/blob/main/ds/intervalset.cpp) の `insert` と `erase` のアルゴリズムを解説する。
+[Interval Set](https://github.com/tatsumr/kyopro/blob/main/ds/intervalset.cpp) のコードが何をしているか？を解説
 
 ## insert
 挿入したい区間を `[l, r)` とする。
@@ -96,4 +96,9 @@ set の中身           [-- it -- )
 3. 隣接する区間が連結可能（i.e., 区間が繋がっている かつ 値が同じ）ならば連結する。
 
 ## erase
-削除したい区間を `[l, r)` とする。
+本質は `insert` と同じ。`insert` と違って値のことを考えなくていい分場合分けが少なくて楽。
+
+1. スタート地点となる区間を探す
+2. **1** で求めた区間が `[l, r)` を完全に含んでいるかどうかで場合分け
+   - 完全に含んでいる場合は `[L, R)` を `[L, l), [r, R)` にする
+   - そうでない場合は左側を調整 -> ひたすら消す -> 右側を調整
