@@ -8,6 +8,37 @@
 ```cpp
 FunctionalGraph(StaticGraph<T> g)
 ```
-[Static Graph](https://github.com/tatsumr/kyopro/blob/main/graph/staticgraph.cpp) g で初期化。
+[Static Graph](https://github.com/tatsumr/kyopro/blob/main/graph/staticgraph.cpp) `g` で初期化。
+
+### cc
+```cpp
+int cc()
+```
+連結成分（connected component）の個数を返す。
+
+### root, to_cycle, len_cycle, cycle
+```cpp
+int root(int v)
+int to_cycle(int v)
+int len_cycle(int v)
+vector<Edge<T>> cycle(int v)
+```
+頂点 `v` から有向辺を辿っていくと、必ず閉路上のある頂点に到達する（`v` が閉路上にある可能性もあるが）。このとき、
+- `root` はその頂点を返す（`v` が閉路上にあるときは `v` を返す）。
+- `to_cycle` は閉路に到達するまでに通った辺の本数を返す。
+- `len_cycle` はその閉路の長さを返す。つまり `v` が属する連結成分に存在する閉路の長さを返す。
+- `cycle` はその閉路をなす辺のリストを返す。辺の順番が望み通りになるとは限らない。
+
+### all_cycles
+```cpp
+vector<vector<Edge<T>>> all_cycles()
+```
+全ての連結成分に存在する閉路の辺のリストを返す。
+
+### next
+```cpp
+int next(int v, long long k)
+```
+頂点 `v` から辺を `k` 本渡って到達する頂点を返す。
 
 ## 仕組み
