@@ -1,6 +1,6 @@
 template <class T>
 struct FunctionalGraph {
-    private:
+  private:
     int n, cnt;
     StaticGraph<T> g, gg;
     vector<int> roots, arrive, len, id;
@@ -20,7 +20,7 @@ struct FunctionalGraph {
         }
     }
     
-    public:
+  public:
     FunctionalGraph() {}
     FunctionalGraph(StaticGraph<T> &g_) : 
     n(g_.size()), cnt(0), g(g_), gg(n), roots(n, -1), arrive(n, -1), len(n, -1), id(n) {
