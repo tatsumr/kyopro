@@ -16,15 +16,14 @@ OfflineSet<T, multi>(a, none)
     - 参照渡しにしているのでもとの配列がソート、重複削除されることに注意
   - 無効値が `none`（ `ge` / `gt` / `le` / `lt` で, 値がなかった場合にこれを返す）
 
-### insert
-### erase
-### operator[]
-
 ### count
 ```cpp
 int count(T x)
 ```
 `x` の個数を返す。true or false の存在判定ではない。
+
+### insert
+### erase
 
 ### ge, gt, le, lt
 ```cpp
@@ -35,5 +34,6 @@ pair<T, int> lt(T x)
 ```
 `x` 以上 / より大きい / 以下 / より小さい 要素の中で 最小 / 最小 / 最大 / 最大 のものの {値, インデックス} を返す。そのような要素がないときは `{none, n}` を返す（n はその時点での要素数）
 
+### operator[]
 ### size
 ### empty
