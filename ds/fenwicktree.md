@@ -4,6 +4,8 @@
 Fenwick Tree（Binary Indexed Tree）
 
 ## 使い方
+
+### add
 ### sum
 ```cpp
 T sum(int l, int r)
