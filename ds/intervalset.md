@@ -18,6 +18,14 @@ bool covered(S x)
 区間 `[l, r)` 、値 `x` （=区間 `[x, x+1)` ）が完全に set に含まれているか判定。
 
 ### get
+```cpp
+auto get(S l, S r) {
+    assert(l < r);
+    return prev(s.upper_bound({l, SINF, e}));
+}
+auto get(S x) { return get(x, x + 1); }
+```
+これが使われる状況として想定しているのは、区間 `[l, r)` や値 `x` が含まれる区間のイテレータを得たいとき。
 
 ### insert
 ```cpp
