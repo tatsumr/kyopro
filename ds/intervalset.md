@@ -45,7 +45,7 @@ void erase(S l, S r, ADD add, DEL del)
 ```cpp
 int size()
 ```
-set に入っている区間の個数を返す（実装の都合で番兵を 2 つ入れているが `size()` には含まれない）。
+set に入っている区間の個数を返す（set には実装の都合で番兵が 2 つあるが `size()` には含まれない）。
 
 ### mex
 ```cpp
