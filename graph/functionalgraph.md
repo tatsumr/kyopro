@@ -1,7 +1,7 @@
 # Functional Graph
 
 ## 概要
-[Functional Graph](https://atcoder.jp/contests/abc357/editorial/10185) に関する様々な操作ができる。
+[functional graph](https://atcoder.jp/contests/abc357/editorial/10185) に関する様々な操作ができる。
 
 ## 使い方
 ### コンストラクタ
@@ -25,6 +25,7 @@ vector<Edge<T>> cycle(int v)
 ```
 頂点 `v` から有向辺を辿っていくと、必ず閉路上のある頂点に到達する（`v` が閉路上にある可能性もあるが）。このとき、
 - `root` はその頂点（初めて到達した閉路上の頂点）を返す。`v` が閉路上にあるときは `v` を返す。
+  - 別の言い方をすると、functional graph の各連結成分は木の集まりで、木の根たちが閉路になっているといえる。`root` は頂点 `v` の根を返す。
 - `to_cycle` は閉路に到達するまでに通った辺の本数を返す。
 - `len_cycle` はその閉路の長さを返す。つまり `v` が属する連結成分に存在する閉路の長さを返す。
 - `cycle` はその閉路をなす辺のリストを返す。辺の順番が望み通りになっているとは限らない。
