@@ -31,6 +31,12 @@ void build()
 #### 制約
 - これを呼んだ後に `add` を呼んではいけない。
 
+### size
+```cpp
+int size()
+```
+頂点数を返す。
+
 ### operator[]
 ```cpp
 g[v], g[v][i]
