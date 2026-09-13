@@ -19,13 +19,10 @@ bool covered(S x)
 
 ### get
 ```cpp
-auto get(S l, S r) {
-    assert(l < r);
-    return prev(s.upper_bound({l, SINF, e}));
-}
-auto get(S x) { return get(x, x + 1); }
+auto get(S l, S r)
+auto get(S x)
 ```
-これが使われる状況として想定しているのは、区間 `[l, r)` や値 `x` が含まれる区間のイテレータを得たいとき。
+これが使われる状況として想定しているのは、区間 `[l, r)` や値 `x` が含まれる区間のイテレータを得たいとき。そのような区間がない場合は `[l, r)` や `x` を超えない区間の中で最大（最右）のもののイテレータを返す。
 
 ### insert
 ```cpp
