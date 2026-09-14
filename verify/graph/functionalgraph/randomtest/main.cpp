@@ -55,17 +55,16 @@ int main() {
         bool ok = true;
         if (SZ(c) != fg.len_cycle(i)) {
             ok = false;
-            cout << "cycle size is wrong\n";
         }
         rep(x, SZ(c)) {
             int y = (x + 1) % SZ(c);
             if (c[x].to != c[y].from) {
                 ok = false;
-                cout << "cycle member is wrong\n";
                 break;
             }
         }
         if (!ok) {
+            cout << "cycle (" << i + 1 << ")\n";
             for (auto& e : c) {
                 cout << e.from + 1 << " -> " << e.to + 1 << "\n";
             }
