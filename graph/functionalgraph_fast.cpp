@@ -1,6 +1,7 @@
 // Static Graph ではなく配列から渡すタイプ
 // 時空間省エネできる
 // cycle, all_cycles は頂点列を返す
+// 閉路をなす頂点列が不要な時は cycles への挿入を消すとさらに速くなるかも？
 
 struct FunctionalGraph {
   private:
