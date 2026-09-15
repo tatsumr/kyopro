@@ -35,9 +35,11 @@ struct FunctionalGraph {
                 q.emplace(v);
             }
         }
+        vector<int> topo;
         while (!q.empty()) {
             int v = q.front();
             q.pop();
+            topo.emplace_back(v);
             int nv = g[v][0].to;
             deg[nv]--;
             if (deg[nv] == 0) {
@@ -68,18 +70,12 @@ struct FunctionalGraph {
                 id[x] = id[y] = cnt - 1;
             }
         }
-        auto dfs = [&](auto dfs, int v) -> void {
-            if (roots[v] != -1) {
-                return;
-            }
+        for (int i = (int)topo.size() - 1; i >= 0; i--) {
+            int v = topo[i];
             int nv = g[v][0].to;
-            dfs(dfs, nv);
             roots[v] = roots[nv];
             arrive[v] = arrive[nv] + 1;
             id[v] = id[nv];
-        };
-        for (int v = 0; v < n; v++) {
-            dfs(dfs, v);
         }
     }
     
