@@ -2,8 +2,8 @@ template <class T>
 struct FunctionalGraph {
   private:
     int n, cnt;
-    StaticGraph<T> g, gg;
-    vector<int> roots, arrive, len, id;
+    StaticGraph<T> g;
+    vector<int> roots, arrive, id;
     vector<vector<Edge<T>>> cycles;
     vector<vector<int>> dp;
 
@@ -23,14 +23,7 @@ struct FunctionalGraph {
   public:
     FunctionalGraph() {}
     FunctionalGraph(StaticGraph<T> &g_) : 
-    n(g_.size()), cnt(0), g(g_), gg(n), roots(n, -1), arrive(n, -1), len(n, -1), id(n) {
-        for (int v = 0; v < n; v++) {
-            int nv = g[v][0].to;
-            T c = g[v][0].cost;
-            int i = g[v][0].idx;
-            gg.add(nv, v, c, i);
-        }
-        gg.build();
+    n(g_.size()), cnt(0), g(g_), roots(n, -1), arrive(n), id(n, -1) {
         vector<int> deg(n);
         for (int v = 0; v < n; v++) {
             int nv = g[v][0].to;
@@ -58,7 +51,7 @@ struct FunctionalGraph {
             }
         }
         for (int v = 0; v < n; v++) {
-            if (roots[v] == -1 || len[v] != -1) {
+            if (roots[v] == -1 || id[v] != -1) {
                 continue;
             }
             cnt++;
@@ -72,31 +65,21 @@ struct FunctionalGraph {
             cycles.emplace_back(es);
             for (auto &e : es) {
                 int x = e.from, y = e.to;
-                len[x] = len[y] = es.size();
                 id[x] = id[y] = cnt - 1;
             }
         }
-        for (int i = 0; i < n; i++) {
-            if (roots[i] == -1) {
-                continue;
+        auto dfs = [&](auto dfs, int v) -> void {
+            if (roots[v] != -1) {
+                return;
             }
-            queue<int> q;
-            q.emplace(i);
-            while (!q.empty()) {
-                int v = q.front();
-                q.pop();
-                for (auto &e : gg[v]) {
-                    int nv = e.to;
-                    if (roots[nv] != -1) {
-                        continue;
-                    }
-                    roots[nv] = roots[v];
-                    arrive[nv] = arrive[v] + 1;
-                    len[nv] = len[v];
-                    id[nv] = id[v];
-                    q.emplace(nv);
-                }
-            }
+            int nv = g[v][0].to;
+            dfs(dfs, nv);
+            roots[v] = roots[nv];
+            arrive[v] = arrive[nv] + 1;
+            id[v] = id[nv];
+        };
+        for (int v = 0; v < n; v++) {
+            dfs(dfs, v);
         }
     }
     
@@ -114,7 +97,7 @@ struct FunctionalGraph {
     
     int len_cycle(int v) const {
         assert(0 <= v && v < n);
-        return len[v];
+        return (int)cycles[id[v]].size();
     }
     
     vector<Edge<T>> cycle(int v) const {
