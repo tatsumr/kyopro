@@ -1,4 +1,4 @@
-// Static Graph ではなく配列から渡すタイプ
+// Static Graph ではなく配列を渡す
 // 時空間省エネできる
 // cycle, all_cycles は頂点列を返す
 // 閉路をなす頂点列が不要な時は cycles への挿入を消すとさらに速くなるかも？
