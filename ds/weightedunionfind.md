@@ -6,7 +6,7 @@
 ## 使い方
 ### merge
 ```cpp
-int merge(int x, int y, T z)
+int merge(int x, int y, T w)
 ```
 `y` の重さ = `x` の重さ + `w` となるように `x` と `y` をマージする。マージ後の根を返す。
 
