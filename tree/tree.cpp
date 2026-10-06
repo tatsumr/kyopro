@@ -1,6 +1,6 @@
 template <class T>
 struct Tree {
-    private:
+  private:
     int n;
     StaticGraph<T> g;
     vector<vector<int>> parent;
@@ -11,7 +11,7 @@ struct Tree {
     void build() {
         queue<int> q;
         depth[root] = 0;
-        distance[root] = 0LL;
+        distance[root] = T(0);
         q.push(root);
         while (!q.empty()) {
             int v = q.front();
@@ -34,7 +34,7 @@ struct Tree {
         }
     }
     
-    public:
+  public:
     Tree() {}
     Tree(StaticGraph<T> &g_, int root_ = 0) :n(g_.size()), g(g_), parent(n, vector<int>(30)), depth(n, -1), distance(n, -1LL), root(root_) {
         build();
