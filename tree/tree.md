@@ -16,7 +16,7 @@ int lca(int u, int v)
 ```
 `u` と `v` の LCA（最小共通祖先）を返す。 
 
-#### la
+### la
 ```cpp
 int la(int u, int k)
 ```
