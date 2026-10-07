@@ -102,11 +102,4 @@ struct Tree {
         assert(0 <= v && v < n);
         return depth[v];
     }
-    
-    bool onpath(int u, int v, int w) const {
-        assert(0 <= u && u < n);
-        assert(0 <= v && v < n);
-        assert(0 <= w && w < n);
-        return dist(u, w) + dist(v, w) == dist(u, v);
-    }
 };
