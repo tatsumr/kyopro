@@ -2,7 +2,7 @@ namespace dijkstra {
 
 template <class T>
 vector<T> Dijkstra(StaticGraph<T> &g, int s) {
-    T mx = (is_same<T, int>::value ? 2000000000 : 1000000000000000000);
+    mx = (is_same<T, int>::value ? INF : LINF);
     vector<T> d(g.size(), mx);
     priority_queue<pair<T, int>, vector<pair<T, int>>, greater<pair<T, int>>> pq;
     d[s] = T(0);
@@ -37,7 +37,7 @@ struct DijkstraRestore {
     public:
     DijkstraRestore() {}
     DijkstraRestore(StaticGraph<T> &g, int s_) : s(s_), prev(g.size()) {
-        mx = (is_same<T, int>::value ? 2000000000 : 1000000000000000000);
+        mx = (is_same<T, int>::value ? INF : LINF);
         d.resize(g.size(), mx);
         priority_queue<pair<T, int>, vector<pair<T, int>>, greater<pair<T, int>>> pq;
         d[s] = T(0);
