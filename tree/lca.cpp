@@ -39,8 +39,7 @@ struct LCA {
         assert(0 <= v && v < N);
         int L = in[u], R = in[v];
         if (L > R) swap(L, R);
-        R++;
-        int k = 31 - __builtin_clz(R - L);
+        int k = 31 - __builtin_clz(R - L + 1);
         int x = table[k][L], y = table[k][R - (1 << k)];
         return (depth[x] < depth[y] ? x : y);
     }
