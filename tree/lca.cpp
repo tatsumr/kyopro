@@ -3,6 +3,7 @@ struct LCA {
     vector<int> depth, in;
     vector<vector<int>> table;
 
+    LCA() {}
     LCA(vector<vector<int>>& g, int root = 0) : N(g.size()), K(0), depth(N), in(N) {
         int M = 2 * N - 1;
         while (1 << (K + 1) <= M) K++;
