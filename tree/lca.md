@@ -20,3 +20,8 @@ int lca(int u, int v)
 #### 計算量
 $O(1)$
 
+### 参考資料
+- [AALのオイラーツアーテクニックの記事](https://info.atcoder.jp/entry/algorithm_lectures/euler_tour_technique)
+- [AALのスパーステーブルの記事](https://info.atcoder.jp/entry/algorithm_lectures/sparse_table)
+
+### 実装メモ
