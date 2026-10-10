@@ -22,7 +22,14 @@ int la(int u, int k)
 ```
 `u` の `k` 個上の祖先の頂点番号を返す（Level Ancestor）。（ `k=0` なら `u` 自身、 `k=1` なら `u` の親）
 
-### dist, par, dep
+### jump
+```cpp
+int jump(int u, int v, int i)
+```
+`u` - `v` パスを $x_0, x_1, ..., x_k$ としたときの $x_i$ を返す。`i` が $k$ より大きい時は `-1` を返す。0-indexed であることに注意。
+- "jump" は [Library Checker](https://judge.yosupo.jp/problem/jump_on_tree) で Jump on Tree と名付けられていることに由来する。
+
+### dist / par / dep
 ```cpp
 int dist(int u, int v)
 int par(int v)
@@ -31,10 +38,3 @@ int dep(int v)
 - `u` と `v` の距離を返す。
 - `v` の親の頂点番号を返す。
 - `v` の深さを返す。根の深さは 0 である。
-
-### jump
-```cpp
-int jump(int u, int v, int i)
-```
-`u` - `v` パスを $x_0, x_1, ..., x_k$ としたときの $x_i$ を返す。`i` が $k$ より大きい時は `-1` を返す。0-indexed であることに注意。
-- "jump" は [Library Checker](https://judge.yosupo.jp/problem/jump_on_tree) で Jump on Tree と名付けられていることに由来する。
