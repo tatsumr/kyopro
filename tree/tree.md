@@ -22,6 +22,16 @@ int la(int u, int k)
 ```
 `u` の `k` 個上の祖先の頂点番号を返す（Level Ancestor）。（ `k=0` なら `u` 自身、 `k=1` なら `u` の親）
 
+### dist, par, dep
+```cpp
+int dist(int u, int v)
+int par(int v)
+int dep(int v)
+```
+- `u` と `v` の距離を返す。
+- `v` の親の頂点番号を返す。
+- `v` の深さを返す。根の深さは 0 である。
+
 ### jump
 ```cpp
 int jump(int u, int v, int i)
