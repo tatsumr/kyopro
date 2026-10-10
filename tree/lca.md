@@ -20,11 +20,11 @@ int lca(int u, int v)
 #### 計算量
 $O(1)$
 
-### 参考資料
+## 参考資料
 - [AALのオイラーツアーテクニックの記事](https://info.atcoder.jp/entry/algorithm_lectures/euler_tour_technique)
 - [AALのスパーステーブルの記事](https://info.atcoder.jp/entry/algorithm_lectures/sparse_table)
 
-### 実装メモ
+## 実装メモ
 ライブラリ作成時に自分が詰まった点を備忘録としてメモしておく。
 - 頂点列は行きがけ順じゃダメ？
   - `1-0-2` という木（根は0）だと行きがけ順は `{0, 1, 2}`。 1 と 2 の LCA が知りたいとき...？
