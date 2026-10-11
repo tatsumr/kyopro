@@ -60,13 +60,13 @@ def Tree(n):
     es = []
     for x in prufer:
         y = heapq.heappop(st)
-        es.append((x, y))
+        es.append((min(x, y), max(x, y)))
         deg[x] -= 1
         if deg[x] == 1:
             heapq.heappush(st, x)
     u = heapq.heappop(st)
     v = heapq.heappop(st)
-    es.append((u, v))
+    es.append((min(u, v), max(u, v)))
     return es
 
 # 多重辺なし、自己ループなし、重みなし、連結
