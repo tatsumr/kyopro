@@ -1,5 +1,6 @@
 import random
 import string
+import heapq
 
 class UF:
     def __init__(self, n):
@@ -46,15 +47,26 @@ def String(n, s=string.ascii_lowercase):
 # 重みなし
 # 0 <= u < v < N
 def Tree(n):
-    uf = UF(n)
+    if n == 1:
+        return []
+    elif n == 2:
+        return [(0, 1)]
+    prufer = Array(n - 2, 0, n - 1)
+    deg = [1 for _ in range(n)]
+    for p in prufer:
+        deg[p] += 1
+    st = [v for v in range(n) if deg[v] == 1]
+    heapq.heapify(st)
     es = []
-    while len(es) < n - 1:
-        u, v = Int(0, n - 1), Int(0, n - 1)
-        if u > v: u, v = v, u
-        if uf.same(u, v): continue
-        uf.merge(u, v)
-        es.append((u, v))
-    random.shuffle(es)
+    for x in prufer:
+        y = heapq.heappop(st)
+        es.append((x, y))
+        deg[x] -= 1
+        if deg[x] == 1:
+            heapq.heappush(st, x)
+    u = heapq.heappop(st)
+    v = heapq.heappop(st)
+    es.append((u, v))
     return es
 
 # 多重辺なし、自己ループなし、重みなし、連結
