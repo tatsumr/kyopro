@@ -3,7 +3,7 @@
 // 点の数が多そうなら LG=20 を変更しよう
 // めっちゃ小さい数が登場するなら MN=-1001001001 を変更しよう
 // 実験の歴史:
-//   https://atcoder.jp/contests/awc0082/submissions/me
+//   https://atcoder.jp/contests/awc0082/submissions?f.User=Tatsu_mr
 //   Point Add Rectangle Sum (Library Checker)
 
 template <class T, class C = int>
