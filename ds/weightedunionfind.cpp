@@ -1,3 +1,4 @@
+// https://github.com/tatsumr/kyopro/blob/main/ds/weightedunionfind.cpp
 template <class T = long long>
 struct WeightedUnionFind {
     private:
