@@ -1,3 +1,4 @@
+// https://github.com/tatsumr/kyopro/blob/main/graph/staticgraph.cpp
 template <class T>
 struct Edge {
     int from, to;
