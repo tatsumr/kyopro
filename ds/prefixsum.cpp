@@ -1,3 +1,4 @@
+// https://github.com/tatsumr/kyopro/blob/main/ds/prefixsum.cpp
 template <class T>
 struct PrefixSum {
     int n;
