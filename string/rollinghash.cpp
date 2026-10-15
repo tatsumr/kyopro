@@ -1,3 +1,4 @@
+// https://github.com/tatsumr/kyopro/blob/main/string/rollinghash.cpp
 namespace rollinghash {
 
 struct Hash {
