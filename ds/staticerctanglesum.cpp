@@ -1,3 +1,4 @@
+// https://github.com/tatsumr/kyopro/blob/main/ds/staticerctanglesum.cpp
 struct StaticRectangleSum {
     vector<int> L, R;
     vector<pair<int, int>> ps;
