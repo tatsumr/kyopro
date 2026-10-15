@@ -1,3 +1,4 @@
+// https://github.com/tatsumr/kyopro/blob/main/ds/waveletmatrix.cpp
 template <class T = int>
 struct WaveletMatrix {
   private:
