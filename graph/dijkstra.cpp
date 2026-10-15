@@ -1,3 +1,4 @@
+// https://github.com/tatsumr/kyopro/blob/main/graph/dijkstra.cpp
 namespace dijkstra {
 
 template <class T>
