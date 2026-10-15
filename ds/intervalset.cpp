@@ -1,3 +1,4 @@
+// https://github.com/tatsumr/kyopro/blob/main/ds/intervalset.cpp
 template <class S, class T, T e>
 struct IntervalSet {
   public:
