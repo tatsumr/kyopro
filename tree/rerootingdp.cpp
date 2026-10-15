@@ -1,3 +1,4 @@
+// https://github.com/tatsumr/kyopro/blob/main/tree/rerootingdp.cpp
 template <class T, class E, T (*merge)(T, T), T (*add_edge)(Edge<E>, T), T (*add_node)(int, T), T (*id)()>
 struct RerootingDP {
     private:
