@@ -6,6 +6,7 @@
 //   https://atcoder.jp/contests/awc0082/submissions?f.User=Tatsu_mr
 //   Point Add Rectangle Sum (Library Checker)
 
+// https://github.com/tatsumr/kyopro/edit/main/ds/rangetree_fast.cpp
 template <class T, class C = int>
 struct RangeTree {
   private:
