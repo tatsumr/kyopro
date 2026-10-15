@@ -3,6 +3,7 @@
 // cycle, all_cycles は頂点列を返す
 // 閉路をなす頂点列が不要な時は cycles への挿入を消すとさらに速くなるかも？
 
+// https://github.com/tatsumr/kyopro/edit/main/graph/functionalgraph_fast.cpp
 struct FunctionalGraph {
   private:
     int n, cnt;
