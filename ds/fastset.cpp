@@ -1,3 +1,4 @@
+// https://github.com/tatsumr/kyopro/blob/main/ds/fastset.cpp
 struct FastSet {
     using uint = unsigned int;
     using ulint = unsigned long long;
