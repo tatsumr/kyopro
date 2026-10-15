@@ -1,3 +1,4 @@
+// https://github.com/tatsumr/kyopro/blob/main/tree/hld.cpp
 template <class T>
 struct HLD {
     private:
