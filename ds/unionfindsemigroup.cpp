@@ -1,12 +1,13 @@
+// https://github.com/tatsumr/kyopro/blob/main/ds/unionfindsemigroup.cpp
 template <class S, S (*op)(S, S), bool inv>
 struct UnionFindSemigroup {
-    private:
+  private:
     int n;
     vector<int> par;
     vector<S> d, acc;
     
-    public:
-    UnionFindSemigroup() {}
+  public:
+    UnionFindSemigroup() : n(0) {}
     UnionFindSemigroup(vector<S> &d_) : n(d_.size()), par(n, -1), d(d_), acc(d_) {}
     
     int merge(int a, int b) {
