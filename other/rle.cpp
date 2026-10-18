@@ -1,3 +1,4 @@
+// https://github.com/tatsumr/kyopro/blob/main/other/rle.cpp
 template <class T>
 vector<pair<T, int>> RLE(vector<T> &v) {
     vector<pair<T, int>> res;
