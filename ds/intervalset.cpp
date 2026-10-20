@@ -1,7 +1,6 @@
 // https://github.com/tatsumr/kyopro/blob/main/ds/intervalset.cpp
 template <class S, class T, T e>
 struct IntervalSet {
-  public:
     struct Node {
         S l, r;
         T val;
@@ -162,7 +161,6 @@ struct IntervalSet {
         cerr << "\n";
     }
     
-  private:
     set<Node> s;
     S SINF = numeric_limits<S>::max();
     using It = typename set<Node>::iterator;
