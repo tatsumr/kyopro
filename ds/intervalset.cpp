@@ -160,7 +160,8 @@ struct IntervalSet {
         }
         cerr << "\n";
     }
-    
+
+  // private:
     set<Node> s;
     S SINF = numeric_limits<S>::max();
     using It = typename set<Node>::iterator;
