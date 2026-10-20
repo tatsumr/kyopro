@@ -1,4 +1,6 @@
 from gen_lib import *
+from random import shuffle
+import itertools
 
 # 例: 1 以上 10 以下の整数 N を生成
 N = Int(1, 10)
