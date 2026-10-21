@@ -9,9 +9,9 @@ struct TreapSet {
         unsigned int pri;
         int sz;
         
-        Node(T val_, int pri_) : 
+        Node(T _val, unsigned int _pri) : 
             p(nullptr), l(nullptr), r(nullptr), 
-            val(val_), pri(pri_), sz(1) {}
+            val(_val), pri(_pri), sz(1) {}
     };
     
     Node *root = nullptr;
@@ -27,43 +27,24 @@ struct TreapSet {
     
     void update(Node *t) {
         t->sz = 1;
-        if (t->l) { t->sz += t->l->sz; }
-        if (t->r) { t->sz += t->r->sz; }
+        if (t->l) t->sz += t->l->sz;
+        if (t->r) t->sz += t->r->sz;
     }
     
-    void rotr(Node *t) {
+    void rotate(Node *t) {
         Node *x = t->p, *y = x->p;
-        if ((x->l = t->r)) {
-            t->r->p = x;
-        }
-        t->r = x;
-        x->p = t;
-        swap(t->sz, x->sz);
-        update(x);
-        if ((t->p = y)) {
-            // if (y->l == x) { y->l = t; }
-            // if (y->r == x) { y->r = t; }
-            (y->l == x ? y->l : y->r) = t;
-            // update(y);
+        if (x->l == t) {
+            if ((x->l = t->r)) t->r->p = x;
+            t->r = x;
         } else {
-            root = t;
+            if ((x->r = t->l)) t->l->p = x;
+            t->l = x;
         }
-    }
-    
-    void rotl(Node *t) {
-        Node *x = t->p, *y = x->p;
-        if ((x->r = t->l)) {
-            t->l->p = x;
-        }
-        t->l = x;
         x->p = t;
         swap(t->sz, x->sz);
         update(x);
         if ((t->p = y)) {
-            // if (y->l == x) { y->l = t; }
-            // if (y->r == x) { y->r = t; }
             (y->l == x ? y->l : y->r) = t;
-            // update(y);
         } else {
             root = t;
         }
@@ -90,19 +71,10 @@ struct TreapSet {
             return;
         }
         Node *par = find_par(t->val);
-        if (!par) {
-            return;
-        }
         (par->val > t->val ? par->l : par->r) = t;
         t->p = par;
-        while (t->p) {
-            if (t->p->l == t && t->p->pri < t->pri) {
-                rotr(t);
-            } else if (t->p->r == t && t->p->pri < t->pri) {
-                rotl(t);
-            } else {
-                break;
-            }
+        while (t->p && t->p->pri < t->pri) {
+            rotate(t);
         }
     }
     
@@ -123,13 +95,11 @@ struct TreapSet {
             return;
         }
         while (t->l || t->r) {
-            if (!t->r) { 
-                rotr(t->l); 
-            } else if (!t->l) { 
-                rotl(t->r); 
-            } else {
-                (t->l->pri > t->r->pri ? rotr(t->l) : rotl(t->r));
-            }
+            Node *c;
+            if (!t->r) c = t->l;
+            else if (!t->l) c = t->r;
+            else c = (t->l->pri > t->r->pri ? t->l : t->r);
+            rotate(c);
         }
         Node *cur = t->p;
         while (cur) {
@@ -202,7 +172,7 @@ struct TreapSet {
         }
     }
     
-    TreapSet(T none_) : none(none_), n(0) {}
+    TreapSet(T _none) : none(_none), n(0) {}
     
     bool count(T x) { return find_node(x); }
     
