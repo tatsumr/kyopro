@@ -2,8 +2,6 @@
 using namespace std;
 #define ALL(v) (v).begin(), (v).end()
 
-// Treap Set
-
 int main() {
     ios::sync_with_stdio(false); cin.tie(nullptr);
 
