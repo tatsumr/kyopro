@@ -29,7 +29,7 @@ int main() {
             vector<int> A;
             for (const int x : st) A.emplace_back(x);
             auto out = [&](int i) {
-                if (0 <= i && i < A.size()) cout << i << " " << A[i] << "\n";
+                if (0 <= i && i < A.size()) cout << A[i] << " " << i << "\n";
                 else cout << none << " " << A.size() << "\n";
             };
             int u = upper_bound(ALL(A), x) - A.begin();
