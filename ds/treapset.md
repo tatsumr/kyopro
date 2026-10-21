@@ -22,6 +22,13 @@ bool count(T x)
 値 `x` が含まれるかどうか判定。現状、多重集合でも個数ではなく true or false を返す仕様になっている。
 
 ### gt, ge, lt, le
+```cpp
+pair<T, int> gt(T x)
+pair<T, int> ge(T x)
+pair<T, int> lt(T x)
+pair<T, int> le(T x)
+```
+`x` より大きい / 以上 / より小さい / 以下の要素の中で最小 / 最大のものの {値, インデックス} を返す。インデックスは 0-indexed。そのような要素がなければ `{none, n}` を返す。ただし `n` はその時点での要素数。
 ### operator[]
 ### size
 ### empty
