@@ -13,3 +13,10 @@ TreapSet<T, bool multi = false>(none)
 ```
 集合の要素の型 `T`、重複を許すかどうかを表す `multi`、無効値 `none` で初期化。
 
+### insert
+### erase
+### count
+### gt, ge, lt, le
+### operator[]
+### size
+### empty
