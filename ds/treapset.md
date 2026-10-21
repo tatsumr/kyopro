@@ -1,9 +1,9 @@
 # Treap Set
 ## 概要
-平衡二分探索木（Treap）で順序付き集合を管理する。k 番目に小さい要素の取得もできる。
+平衡二分探索木（Treap）で順序付き集合を管理する。 $k$ 番目に小さい要素の取得もできる。
 
 似たようなことができるデータ構造に対する差別化としては、
-- [64分木](https://github.com/tatsumr/kyopro/blob/main/ds/fastset.cpp) と違い、k 番目に小さい要素の取得ができる。
+- [64分木](https://github.com/tatsumr/kyopro/blob/main/ds/fastset.cpp) と違い、 $k$ 番目に小さい要素の取得ができる。
 - [Binary Trie](https://github.com/tatsumr/kyopro/blob/main/ds/binarytrie.cpp) と違い、非負整数以外の集合も扱える。
 - [Offline Set](https://github.com/tatsumr/kyopro/blob/main/ds/offlineset.cpp) と違い、挿入する要素を事前に知る必要がない。
 
