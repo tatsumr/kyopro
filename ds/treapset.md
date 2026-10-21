@@ -16,6 +16,11 @@ TreapSet<T, bool multi = false>(none)
 ### insert
 ### erase
 ### count
+```cpp
+bool count(T x)
+```
+値 `x` が含まれるかどうか判定。現状、多重集合でも個数ではなく true or false を返す仕様になっている。
+
 ### gt, ge, lt, le
 ### operator[]
 ### size
