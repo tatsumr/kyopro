@@ -26,10 +26,11 @@ int main() {
             st.erase(x);
             dbg();
         } else if (tp == 3) {
-            auto [a, b] = st.gt(x); cout << a << " " << b << "\n";
-            auto [a, b] = st.ge(x); cout << a << " " << b << "\n";
-            auto [a, b] = st.lt(x); cout << a << " " << b << "\n";
-            auto [a, b] = st.le(x); cout << a << " " << b << "\n";
+            int a, b;
+            tie(a, b) = st.gt(x); cout << a << " " << b << "\n";
+            tie(a, b) = st.ge(x); cout << a << " " << b << "\n";
+            tie(a, b) = st.lt(x); cout << a << " " << b << "\n";
+            tie(a, b) = st.le(x); cout << a << " " << b << "\n";
         }
     }
 }
