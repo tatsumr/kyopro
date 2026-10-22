@@ -91,9 +91,6 @@ struct TreapSet {
     }
     
     void erase(Node *t) {
-        if (!t) {
-            return;
-        }
         while (t->l || t->r) {
             Node *c;
             if (!t->r) c = t->l;
@@ -108,7 +105,6 @@ struct TreapSet {
         }
         if (t->p) {
             (t->p->l == t ? t->p->l : t->p->r) = nullptr;
-            t->p = nullptr;
         } else {
             root = nullptr;
         }
@@ -183,7 +179,8 @@ struct TreapSet {
     }
     
     void erase(T x) {
-        if (!count(x)) { return; }
+        Node *t = find_node(x);
+        if (!t) return;
         n--;
         erase(find_node(x));
     }
