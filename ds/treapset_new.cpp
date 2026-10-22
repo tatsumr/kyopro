@@ -182,7 +182,7 @@ struct TreapSet {
         Node *t = find_node(x);
         if (!t) return;
         n--;
-        erase(find_node(x));
+        erase(t);
     }
     
     pair<T, int> gt(T x) { return search_greater(x, false); }
