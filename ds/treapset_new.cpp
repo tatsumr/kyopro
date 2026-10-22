@@ -65,7 +65,7 @@ struct TreapSet {
         return nullptr;
     }
     
-    void insert(Node *t) {
+    void insert_node(Node *t) {
         if (!root) {
             root = t;
             return;
@@ -90,7 +90,7 @@ struct TreapSet {
         return cur;
     }
     
-    void erase(Node *t) {
+    void erase_node(Node *t) {
         while (t->l || t->r) {
             Node *c;
             if (!t->r) c = t->l;
@@ -175,14 +175,14 @@ struct TreapSet {
     void insert(T x) { 
         if (!multi && count(x)) { return; }
         n++;
-        insert(new Node(x, xorshift())); 
+        insert_node(new Node(x, xorshift())); 
     }
     
     void erase(T x) {
         Node *t = find_node(x);
         if (!t) return;
         n--;
-        erase(t);
+        erase_node(t);
     }
     
     pair<T, int> gt(T x) { return search_greater(x, false); }
