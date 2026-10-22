@@ -173,7 +173,7 @@ struct TreapSet {
     bool count(T x) { return find_node(x); }
     
     void insert(T x) { 
-        if (!multi && count(x)) { return; }
+        if (!multi && count(x)) return;
         n++;
         insert_node(new Node(x, xorshift())); 
     }
