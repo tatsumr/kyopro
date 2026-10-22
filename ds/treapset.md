@@ -18,11 +18,16 @@ TreapSet<T, bool multi = false>(none)
 
 ### insert
 ### erase
+```cpp
+void erase(T x)
+```
+要素 `x` を削除する。重複を許す集合では、`x` が1つだけ削除される。集合に `x` が存在しない状態で `erase(x)` を呼んでもエラーは起こらない。
+
 ### count
 ```cpp
 bool count(T x)
 ```
-値 `x` が含まれるかどうか判定。現状、重複を許す場合でも個数ではなく true or false を返す仕様になっている。
+値 `x` が含まれるかどうか判定。現状、重複を許す集合でも個数ではなく true or false を返す仕様になっている。
 
 ### gt, ge, lt, le
 ```cpp
