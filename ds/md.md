@@ -27,4 +27,6 @@
 
 本ライブラリと同じアルゴリズムを配列を用いて実装して（AIに実装させた）[Library Checker](https://judge.yosupo.jp/)の同じ問題に提出した結果、速度はあまり変わらない（少しだけ速くなる）がメモリ使用量が大きく減ることが分かった。
 
-[Ordered Set](https://judge.yosupo.jp/problem/ordered_set) [ポインタ（32.27Mib）](https://judge.yosupo.jp/submission/412089) [配列（16.91Mib）](https://judge.yosupo.jp/submission/412684)
+[Ordered Set](https://judge.yosupo.jp/problem/ordered_set)の提出:  [ポインタ（32.27Mib）](https://judge.yosupo.jp/submission/412089) [配列（16.91Mib）](https://judge.yosupo.jp/submission/412684)
+
+[Predecessor Problem](https://judge.yosupo.jp/problem/predecessor_problem)の提出: [ポインタ（473.21Mib）](https://judge.yosupo.jp/submission/412091) [配列（245.92Mib）](https://judge.yosupo.jp/submission/412685)
