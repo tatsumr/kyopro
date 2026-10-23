@@ -1,5 +1,5 @@
 # Treap Set の実装
-[Treap Set](https://github.com/tatsumr/kyopro/blob/main/ds/treapset.cpp) の実装説明・高速化に関する知見をまとめた。
+[Treap Set](https://github.com/tatsumr/kyopro/blob/main/ds/treapset.cpp) の実装を説明する。またポインタによる実装と配列による実装の比較結果をまとめる。
 
 ## rotate
 `rotate(Node *t)` は二分探索木ではおなじみの「木の回転」を、ノード `t` を中心に行う関数である。
@@ -21,3 +21,10 @@
 ## kth
 ある要素（ノード）のインデックスは、予め各ノードに自分を根とする部分木のサイズを持たせておき、探索の際に「今見ているノードの左部分木のサイズ+1」を足していくことで求めることができる。
 [こちらの記事](https://qiita.com/hamamu/items/570e7c36bf73913cbeb8#%E9%85%8D%E5%88%97%E3%81%A8%E3%81%97%E3%81%A6%E4%BD%BF%E3%81%86%E6%96%B9%E6%B3%95implicit-treap)の解説が分かりやすい。
+
+## 配列による実装
+本ライブラリはポインタを用いて実装しているが、配列を用いて実装するという方法もある。
+
+本ライブラリと同じアルゴリズムを配列を用いて実装して（AIに実装させた）[Library Checker](https://judge.yosupo.jp/)の同じ問題に提出した結果、速度はあまり変わらない（少しだけ速くなる）がメモリ使用量が大きく減ることが分かった。
+
+[Ordered Set](https://judge.yosupo.jp/problem/ordered_set) [ポインタ（32.27Mib）](https://judge.yosupo.jp/submission/412089) [配列（16.91Mib）](https://judge.yosupo.jp/submission/412684)
