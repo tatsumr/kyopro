@@ -39,7 +39,4 @@
 |--------| ----------------|---------------|
 |[Ordered Set](https://judge.yosupo.jp/problem/ordered_set)|[319ms / 32.27Mib](https://judge.yosupo.jp/submission/412089)|[291ms / 16.91Mib](https://judge.yosupo.jp/submission/412684)|
 |[Predecessor Problem](https://judge.yosupo.jp/problem/predecessor_problem)|[2130ms / 473.21Mib](https://judge.yosupo.jp/submission/412091)|[2056ms / 245.92Mib](https://judge.yosupo.jp/submission/412685)
-
-[Ordered Set](https://judge.yosupo.jp/problem/ordered_set)の提出:  [ポインタ（32.27Mib）](https://judge.yosupo.jp/submission/412089) [配列（16.91Mib）](https://judge.yosupo.jp/submission/412684)
-
-[Predecessor Problem](https://judge.yosupo.jp/problem/predecessor_problem)の提出: [2130ms / 473.21Mib](https://judge.yosupo.jp/submission/412091) [配列（245.92Mib）](https://judge.yosupo.jp/submission/412685)
+|[ABC234-D](https://atcoder.jp/contests/abc234/tasks/abc234_d)|[387ms / 29352KiB](https://atcoder.jp/contests/abc234/submissions/80292595)|[327ms / 17836KiB](https://atcoder.jp/contests/abc234/submissions/80292638)|
