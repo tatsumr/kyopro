@@ -16,7 +16,7 @@ TreapSet<T, bool multi = false>(T none, int capacity = 0)
 ```
 集合の要素の型 `T`、重複を許すかどうかを表す `multi`、無効値 `none` 、集合のサイズの上限 `capacity` で初期化。
 - `capacity` を宣言することで内部ではノード配列の `reserve` が呼ばれるため、配列の再確保のコストが抑えられるというメリットがある。
-- `capacity = 0` のままでコンストラクトする、あるいは `capacity` を超えるサイズになってもエラーは生じない。
+- `capacity = 0` のままでコンストラクトしたり、途中で集合が `capacity` を超えるサイズになったりしてもエラーは生じない。
 
 ### insert
 ### erase
