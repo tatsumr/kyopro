@@ -1,209 +1,264 @@
 template <class T, bool multi = false>
 struct TreapSet {
+    static constexpr int NIL = -1;
+
     T none;
     int n;
-    
+
     struct Node {
-        Node *p, *l, *r;
+        int p, l, r;
         T val;
         unsigned int pri;
         int sz;
-        
-        Node(T _val, unsigned int _pri) : 
-            p(nullptr), l(nullptr), r(nullptr), 
-            val(_val), pri(_pri), sz(1) {}
+
+        Node(T _val, unsigned int _pri)
+            : p(NIL), l(NIL), r(NIL),
+              val(_val), pri(_pri), sz(1) {}
     };
-    
-    Node *root = nullptr;
-    
+
+    vector<Node> tr;
+    vector<int> free_ids;
+    int root = NIL;
+
     unsigned int xorshift() {
         static unsigned int x = 123456789, y = 362436069, z = 521288629, w = 88675123;
-        unsigned int t = (x ^ (x << 11));
+        unsigned int t = x ^ (x << 11);
         x = y;
         y = z;
         z = w;
-        return (w = (w ^ (w >> 19)) ^ (t ^ (t >> 8)));
+        return w = (w ^ (w >> 19)) ^ (t ^ (t >> 8));
     }
-    
-    void update(Node *t) {
-        t->sz = 1;
-        if (t->l) t->sz += t->l->sz;
-        if (t->r) t->sz += t->r->sz;
+
+    int sz(int t) const {
+        return t == NIL ? 0 : tr[t].sz;
     }
-    
-    void rotate(Node *t) {
-        Node *x = t->p, *y = x->p;
-        if (x->l == t) {
-            if ((x->l = t->r)) t->r->p = x;
-            t->r = x;
-        } else {
-            if ((x->r = t->l)) t->l->p = x;
-            t->l = x;
+
+    void update(int t) {
+        if (t == NIL) return;
+        tr[t].sz = 1 + sz(tr[t].l) + sz(tr[t].r);
+    }
+
+    int new_node(T x, unsigned int pri) {
+        if (!free_ids.empty()) {
+            int id = free_ids.back();
+            free_ids.pop_back();
+            tr[id] = Node(x, pri);
+            return id;
         }
-        x->p = t;
-        swap(t->sz, x->sz);
-        update(x);
-        if ((t->p = y)) {
-            (y->l == x ? y->l : y->r) = t;
+        tr.emplace_back(x, pri);
+        return (int)tr.size() - 1;
+    }
+
+    void rotate(int t) {
+        int x = tr[t].p;
+        int y = tr[x].p;
+
+        if (tr[x].l == t) {
+            tr[x].l = tr[t].r;
+            if (tr[t].r != NIL) {
+                tr[tr[t].r].p = x;
+            }
+            tr[t].r = x;
+        } else {
+            tr[x].r = tr[t].l;
+            if (tr[t].l != NIL) {
+                tr[tr[t].l].p = x;
+            }
+            tr[t].l = x;
+        }
+
+        tr[x].p = t;
+        tr[t].p = y;
+
+        if (y != NIL) {
+            if (tr[y].l == x) tr[y].l = t;
+            else tr[y].r = t;
         } else {
             root = t;
         }
+
+        update(x);
+        update(t);
     }
-    
-    Node *find_par(T x) {
-        Node *cur = root;
-        while (cur) {
-            cur->sz++;
-            if (cur->val > x) {
-                if (cur->l) { cur = cur->l; }
-                else { return cur; }
-            } else {
-                if (cur->r) { cur = cur->r; }
-                else { return cur; }
-            }
+
+    int find_node(T x) const {
+        int cur = root;
+        while (cur != NIL) {
+            if (tr[cur].val == x) return cur;
+            cur = tr[cur].val > x ? tr[cur].l : tr[cur].r;
         }
-        return nullptr;
+        return NIL;
     }
-    
-    void insert_node(Node *t) {
-        if (!root) {
+
+    void insert_node(int t) {
+        if (root == NIL) {
             root = t;
             return;
         }
-        Node *par = find_par(t->val);
-        (par->val > t->val ? par->l : par->r) = t;
-        t->p = par;
-        while (t->p && t->p->pri < t->pri) {
+
+        int cur = root;
+        int par = NIL;
+
+        while (cur != NIL) {
+            par = cur;
+            tr[cur].sz++;
+
+            if (tr[cur].val > tr[t].val) {
+                cur = tr[cur].l;
+            } else {
+                cur = tr[cur].r;
+            }
+        }
+
+        tr[t].p = par;
+        if (tr[par].val > tr[t].val) {
+            tr[par].l = t;
+        } else {
+            tr[par].r = t;
+        }
+
+        while (tr[t].p != NIL &&
+               tr[tr[t].p].pri < tr[t].pri) {
             rotate(t);
         }
     }
-    
-    Node *find_node(T x) {
-        Node *cur = root;
-        while (cur) {
-            if (cur->val == x) {
-                return cur;
+
+    void erase_node(int t) {
+        while (tr[t].l != NIL || tr[t].r != NIL) {
+            int c;
+            if (tr[t].l == NIL) {
+                c = tr[t].r;
+            } else if (tr[t].r == NIL) {
+                c = tr[t].l;
             } else {
-                cur = (cur->val > x ? cur->l : cur->r);
+                c = tr[tr[t].l].pri > tr[tr[t].r].pri
+                    ? tr[t].l : tr[t].r;
             }
-        }
-        return cur;
-    }
-    
-    void erase_node(Node *t) {
-        while (t->l || t->r) {
-            Node *c;
-            if (!t->r) c = t->l;
-            else if (!t->l) c = t->r;
-            else c = (t->l->pri > t->r->pri ? t->l : t->r);
             rotate(c);
         }
-        Node *cur = t->p;
-        while (cur) {
-            cur->sz--;
-            cur = cur->p;
-        }
-        if (t->p) {
-            (t->p->l == t ? t->p->l : t->p->r) = nullptr;
+
+        int par = tr[t].p;
+        if (par != NIL) {
+            if (tr[par].l == t) tr[par].l = NIL;
+            else tr[par].r = NIL;
+
+            for (int cur = par; cur != NIL; cur = tr[cur].p) {
+                tr[cur].sz--;
+            }
         } else {
-            root = nullptr;
+            root = NIL;
         }
-        delete t;
+
+        free_ids.push_back(t);
     }
-    
+
     pair<T, int> search_greater(T x, bool equal) {
-        Node *cur = root;
+        int cur = root;
         pair<T, int> res = {none, n};
         int cnt = 0;
-        while (cur) {
-            int id = cnt + (cur->l ? cur->l->sz : 0);
-            if (x < cur->val || (equal && x == cur->val)) {
-                res = {cur->val, id};
-                cur = cur->l;
+
+        while (cur != NIL) {
+            int id = cnt + sz(tr[cur].l);
+
+            if (x < tr[cur].val ||
+                (equal && x == tr[cur].val)) {
+                res = {tr[cur].val, id};
+                cur = tr[cur].l;
             } else {
-                cur = cur->r;
+                cur = tr[cur].r;
                 cnt = id + 1;
             }
         }
         return res;
     }
-    
+
     pair<T, int> search_less(T x, bool equal) {
-        Node *cur = root;
+        int cur = root;
         pair<T, int> res = {none, n};
         int cnt = 0;
-        while (cur) {
-            int id = cnt + (cur->l ? cur->l->sz : 0);
-            if (x > cur->val || (equal && x == cur->val)) {
-                res = {cur->val, id};
-                cur = cur->r;
+
+        while (cur != NIL) {
+            int id = cnt + sz(tr[cur].l);
+
+            if (x > tr[cur].val ||
+                (equal && x == tr[cur].val)) {
+                res = {tr[cur].val, id};
+                cur = tr[cur].r;
                 cnt = id + 1;
             } else {
-                cur = cur->l;
+                cur = tr[cur].l;
             }
         }
         return res;
     }
-    
+
     T kth(int k) {
-        Node *cur = root;
-        while (true) {
-            int id = (cur->l ? cur->l->sz : 0) + 1;
-            if (k == id) {
-                return cur->val;
-            } else if (k < id) {
-                cur = cur->l;
+        int cur = root;
+
+        while (cur != NIL) {
+            int id = sz(tr[cur].l) + 1;
+
+            if (k == id) return tr[cur].val;
+
+            if (k < id) {
+                cur = tr[cur].l;
             } else {
-                cur = cur->r;
+                cur = tr[cur].r;
                 k -= id;
             }
         }
+
+        assert(false && "kth: index out of range");
+        return none;
     }
-    
-    void debug(Node *t) {
-        if (t) {
-            debug(t->l);
-            cerr << t->val << " ";
-            debug(t->r);
-        }
+
+    void debug(int t) {
+        if (t == NIL) return;
+        debug(tr[t].l);
+        cerr << tr[t].val << " ";
+        debug(tr[t].r);
     }
-    
-    TreapSet(T _none) : none(_none), n(0) {}
-    
-    bool count(T x) { return find_node(x); }
-    
-    void insert(T x) { 
+
+    TreapSet(T _none, int capacity = 0)
+        : none(_none), n(0) {
+        tr.reserve(capacity);
+    }
+
+    bool count(T x) {
+        return find_node(x) != NIL;
+    }
+
+    void insert(T x) {
         if (!multi && count(x)) return;
+
+        int t = new_node(x, xorshift());
         n++;
-        insert_node(new Node(x, xorshift())); 
+        insert_node(t);
     }
-    
+
     void erase(T x) {
-        Node *t = find_node(x);
-        if (!t) return;
+        int t = find_node(x);
+        if (t == NIL) return;
+
         n--;
         erase_node(t);
     }
-    
+
     pair<T, int> gt(T x) { return search_greater(x, false); }
-    
     pair<T, int> ge(T x) { return search_greater(x, true); }
-    
     pair<T, int> lt(T x) { return search_less(x, false); }
-    
     pair<T, int> le(T x) { return search_less(x, true); }
-    
+
     T operator[](int i) {
         assert(0 <= i && i < size());
         return kth(i + 1);
     }
-    
+
     int size() { return n; }
-    
     bool empty() { return n == 0; }
-    
-    void debug() { 
-        debug(root); 
-        cerr << "\n";
+
+    void debug() {
+        debug(root);
+        cerr << '\n';
     }
 };
