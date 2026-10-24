@@ -1,3 +1,4 @@
+// https://github.com/tatsumr/kyopro/blob/main/ds/treapset.cpp
 template <class T, bool multi = false>
 struct TreapSet {
     static constexpr int NIL = -1;
