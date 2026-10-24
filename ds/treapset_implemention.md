@@ -34,6 +34,11 @@
 
 よって本ライブラリは配列を用いた実装を採用している。ポインタを用いた実装は[old-library/ds](https://github.com/tatsumr/old-library/tree/main/ds)に置いてある。
 
+### 比較結果
+| 問題名 | ポインタによる実装 | 配列による実装 |
+|--------| ----------------|---------------|
+|[Ordered Set](https://judge.yosupo.jp/problem/ordered_set)|[319ms / 32.27Mib](https://judge.yosupo.jp/submission/412089)|[291ms / 16.91Mib](https://judge.yosupo.jp/submission/412684)|
+
 [Ordered Set](https://judge.yosupo.jp/problem/ordered_set)の提出:  [ポインタ（32.27Mib）](https://judge.yosupo.jp/submission/412089) [配列（16.91Mib）](https://judge.yosupo.jp/submission/412684)
 
 [Predecessor Problem](https://judge.yosupo.jp/problem/predecessor_problem)の提出: [ポインタ（473.21Mib）](https://judge.yosupo.jp/submission/412091) [配列（245.92Mib）](https://judge.yosupo.jp/submission/412685)
