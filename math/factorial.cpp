@@ -1,3 +1,4 @@
+// https://github.com/tatsumr/kyopro/blob/main/math/factorial.cpp
 const int MAX = 510000;
 mint fac[MAX], finv[MAX], inv[MAX];
 
