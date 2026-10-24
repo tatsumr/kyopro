@@ -1,3 +1,4 @@
+// https://github.com/tatsumr/kyopro/blob/main/math/fastprime.cpp
 namespace fastprime {
 
 template <class T>
