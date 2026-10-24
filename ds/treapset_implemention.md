@@ -32,7 +32,7 @@
 
 [Library Checker](https://judge.yosupo.jp/)で実験した結果、どちらも速度はあまり変わらない（少しだけ速くなる）が配列による実装の方がメモリ使用量が大きく減ることが分かった。
 
-よって本ライブラリは配列を用いた実装を採用している。ポインタを用いた実装は[old-library/ds](https://github.com/tatsumr/old-library)に置いてある。
+よって本ライブラリは配列を用いた実装を採用している。ポインタを用いた実装は[old-library/ds](https://github.com/tatsumr/old-library/tree/main/ds)に置いてある。
 
 [Ordered Set](https://judge.yosupo.jp/problem/ordered_set)の提出:  [ポインタ（32.27Mib）](https://judge.yosupo.jp/submission/412089) [配列（16.91Mib）](https://judge.yosupo.jp/submission/412684)
 
