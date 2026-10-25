@@ -3,7 +3,7 @@ namespace dijkstra {
 
 template <class T>
 vector<T> Dijkstra(StaticGraph<T> &g, int s) {
-    mx = (is_same<T, int>::value ? INF : LINF);
+    T mx = (is_same<T, int>::value ? INF : LINF);
     vector<T> d(g.size(), mx);
     priority_queue<pair<T, int>, vector<pair<T, int>>, greater<pair<T, int>>> pq;
     d[s] = T(0);
