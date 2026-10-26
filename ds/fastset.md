@@ -1,4 +1,6 @@
 # Fast Set
+コード: [ds/fastset.cpp](https://github.com/tatsumr/kyopro/blob/main/ds/fastset.cpp)
+
 ## 概要
 64分木で非負整数の集合を管理するデータ構造。`std::set`より高速に動作する。
 
