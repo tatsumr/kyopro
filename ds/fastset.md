@@ -21,7 +21,7 @@ $0 \le x \lt n$
 #### 計算量
 $O(1)$
 
-### insert, erase
+## insert, erase
 ```cpp
 void insert(int x)
 void erase(int x)
@@ -31,3 +31,5 @@ void erase(int x)
 $0 \le x \lt n$
 #### 計算量
 $w=64$ として $O(\log n / \log w)$
+
+### next, prev
