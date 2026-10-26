@@ -5,7 +5,7 @@
 `rotate(Node *t)` は二分探索木ではおなじみの「木の回転」を、ノード `t` を中心に行う関数である。
 ![treapset_rotate](https://github.com/user-attachments/assets/23505509-7057-4b67-8632-14d430fda8aa)
 
-![rotate.pdf](https://github.com/user-attachments/files/33977246/rotate.pdf)
+![rotate.pdf](https://github.com/user-attachments/files/33977372/rotate.pdf)
 
 図のように `t` が親の左の子なら右向きに回転、右の子なら左向きに回転する。実装ではこれらを1つの関数にまとめてある。
 
