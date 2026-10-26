@@ -9,6 +9,8 @@
 
 一方でこちらの方がおそらく速度が遅い（ $O( \log N)$ 時間で処理できるが、定数倍が重いと思われる）ので注意。
 
+実装の説明を [ds/treapset_implemention.md](https://github.com/tatsumr/kyopro/blob/main/ds/treapset_implemention.md) に書いた。
+
 ## 使い方
 ### コンストラクタ
 ```cpp
