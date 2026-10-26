@@ -1,13 +1,6 @@
 # Treap Set の実装
 [Treap Set](https://github.com/tatsumr/kyopro/blob/main/ds/treapset.cpp) の実装について説明する。
 
-```mermaid
-graph TD
-    A((1)) --> B((2))
-    A --> C((3))
-    B --> D((4))
-```
-
 ## rotate
 `rotate(Node *t)` は二分探索木ではおなじみの「木の回転」を、ノード `t` を中心に行う関数である。
 ![treapset_rotate](https://github.com/user-attachments/assets/23505509-7057-4b67-8632-14d430fda8aa)
