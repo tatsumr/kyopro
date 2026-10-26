@@ -21,7 +21,7 @@ $0 \le x \lt n$
 #### 計算量
 $O(1)$
 
-## insert, erase
+### insert, erase
 ```cpp
 void insert(int x)
 void erase(int x)
@@ -33,3 +33,26 @@ $0 \le x \lt n$
 $w=64$ として $O(\log n / \log w)$
 
 ### next, prev
+```cpp
+int next(int x)
+int prev(int x)
+```
+`x` 以上で最小の要素 / `x` 以下で最大の要素を返す。そのような要素がなければ $-1$ を返す。
+#### 計算量
+$w=64$ として $O(\log n / \log w)$
+
+### min, max
+```cpp
+int min()
+int max()
+```
+集合内で最小 / 最大の要素を返す。集合が空のときは $-1$ を返す。
+#### 計算量
+$w=64$ として $O(\log n / \log w)$
+
+### size, empty
+```cpp
+int size()
+bool empty()
+```
+`size()` は集合の要素の個数を返す。 `empty()` は集合が空かどうかを返す。
