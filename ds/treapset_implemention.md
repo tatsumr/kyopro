@@ -32,7 +32,7 @@
 
 いくつかの問題に提出して調べた結果、配列による実装の方が少し高速な上にメモリ使用量がかなり少ないことが分かった。
 
-よってここでは配列を用いた実装を採用している。ポインタを用いた実装は[old-library/ds]([https://github.com/tatsumr/old-library/tree/main/ds](https://github.com/tatsumr/old-library/blob/main/ds/treapset2.cpp))に置いてある。
+よってここでは配列を用いた実装を採用している。ポインタを用いた実装は[old-library/ds](https://github.com/tatsumr/old-library/blob/main/ds/treapset2.cpp)に置いてある。
 
 ### 比較結果
 | 問題名 | ポインタによる実装 | 配列による実装 |
