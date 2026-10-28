@@ -79,4 +79,4 @@ $O(1)$
 
 下に示すのがそのイメージ図である。◯が頂点であり、1ビットに対応する。赤い四角が64ビットの整数を表している。
 
-![fastset](https://github.com/user-attachments/assets/008d2026-056d-4b64-a117-b302034bbd13)
+![fastset](https://github.com/user-attachments/assets/7995d0e2-34e7-4d6f-9136-3002ea109db4)
