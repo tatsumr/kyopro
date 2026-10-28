@@ -15,7 +15,7 @@ CycleDetection(StaticGraph g, bool directed)
 
 ### find
 ```cpp
-vector<vector<Edge<T>> find()
+vector<Edge<T>> find()
 ```
 `g` に含まれるサイクルを1つ見つけ、その辺のリストを返す。サイクルが存在しない場合は空列を返す。
 #### 計算量
