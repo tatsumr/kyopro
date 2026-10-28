@@ -1,3 +1,4 @@
+// https://github.com/tatsumr/kyopro/blob/main/graph/cycledetection.cpp
 template <class T>
 struct CycleDetection {
     int n;
