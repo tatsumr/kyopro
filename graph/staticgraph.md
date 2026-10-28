@@ -1,4 +1,5 @@
 # Static Graph
+コード: [graph/staticgraph.cpp](https://github.com/tatsumr/kyopro/blob/main/graph/staticgraph.cpp)
 
 ## 概要
 - グラフ。CSR 形式にしているので、`vector<vector<Edge>>`より高速。
