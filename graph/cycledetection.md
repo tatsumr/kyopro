@@ -2,7 +2,7 @@
 コード: [graph/cycledetection.cpp](https://github.com/tatsumr/kyopro/blob/main/graph/cycledetection.cpp)
 
 ## 概要
-グラフのサイクルを、深さ優先探索をすることで検出する。
+グラフのサイクルを、深さ優先探索を用いて検出する。
 
 ## 使い方
 ### コンストラクタ
