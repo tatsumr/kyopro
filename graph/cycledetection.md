@@ -7,7 +7,7 @@
 ## 使い方
 ### コンストラクタ
 ```cpp
-CycleDetection(StaticGraph g, bool directed)
+CycleDetection(StaticGraph<T> g, bool directed)
 ```
 [Static Graph](https://github.com/tatsumr/kyopro/blob/main/graph/staticgraph.md) `g` 、有向グラフかどうかを表す bool 型変数 `directed` で初期化する。
 
