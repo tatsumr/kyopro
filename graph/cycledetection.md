@@ -11,6 +11,8 @@ CycleDetection(StaticGraph g, bool directed)
 ```
 [Static Graph](https://github.com/tatsumr/kyopro/blob/main/graph/staticgraph.md) `g` 、有向グラフかどうかを表す bool 型変数 `directed` で初期化する。
 
+**注意: Static Graph `g` に add する際は `g.add(from, to, cost, idx);` と引数 4 つでやらないといけない。**
+
 ### find
 ```cpp
 vector<vector<Edge<T>> find()
