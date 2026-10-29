@@ -55,3 +55,5 @@ int bsf(ulint x) const { return __builtin_ctzll(x); }
 3. `seg[2][0]` の $1$ ビット目以上を調べる。 `seg[2][0]` の $1$ ビット目が立っていることを発見。子の階層へ移動。
 4. `seg[1][1]` で立っている最下位ビットは $0$ ビット目。子の階層へ移動。
 5. `seg[0][64]` で立っている最下位ビットは $4$ ビット目。よって要素 $4100$ が特定された。
+
+![fastset_next](https://github.com/user-attachments/assets/1f4f230d-8a79-43ad-9993-b23ed9ed2c6f)
