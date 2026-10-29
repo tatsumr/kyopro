@@ -8,7 +8,7 @@
 ```cpp
 FunctionalGraph(StaticGraph<T> g)
 ```
-[Static Graph](https://github.com/tatsumr/kyopro/blob/main/graph/staticgraph.cpp) `g` で初期化。
+[Static Graph](https://github.com/tatsumr/kyopro/blob/main/graph/staticgraph.md) `g` で初期化。
 
 **注意: Static Graph `g` に add する際は `g.add(from, to, cost, idx);` と引数 4 つでやらないといけない。**
 
