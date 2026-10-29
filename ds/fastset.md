@@ -1,5 +1,6 @@
 # Fast Set
 コード: [ds/fastset.cpp](https://github.com/tatsumr/kyopro/blob/main/ds/fastset.cpp)
+
 解説: [ds/fastset_algorithm.cpp](https://github.com/tatsumr/kyopro/blob/main/ds/fastset_algorithm.md)
 
 ## 概要
