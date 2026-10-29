@@ -44,7 +44,7 @@
 
 最下位ビットを調べる際には `bsf(x)` という関数が用いられている。
 ```cpp
-int bsg(ulint x) const { return __builtin_ctzll(x); }
+int bsf(ulint x) const { return __builtin_ctzll(x); }
 ```
 これは $x$ を $2$ 進数で表したときに最下位ビットから続く $0$ の個数を返す。例えば `bsf(18)=1` である。
 この関数は引数が $0$ のときの結果は未定義だが、実装では引数が $0$ になることはないので問題ない。
