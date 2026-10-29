@@ -12,7 +12,7 @@
 ```cpp
 Tree(StaticGraph<T> g, int root = 0)
 ```
-[Static Graph](https://github.com/tatsumr/kyopro/blob/main/graph/staticgraph.cpp) `g` 、根の頂点番号 `root` で構築。
+[Static Graph](https://github.com/tatsumr/kyopro/blob/main/graph/staticgraph.md) `g` 、根の頂点番号 `root` で構築。
 
 ### lca
 ```cpp
