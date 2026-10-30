@@ -1,4 +1,6 @@
 # Static Rectangle Sum
+コード: [ds/staticrecranglesum.cpp](https://github.com/tatsumr/kyopro/blob/main/ds/staticerctanglesum.cpp)
+
 ## 概要
 こんな問題が解ける:
 
@@ -7,7 +9,9 @@ xy平面上に $N$ 個の点がある。以下のクエリに答えよ:
 - $l$, $r$, $d$, $u$ が与えられる。 $[l, r) \times [d, u)$ の矩形領域上に点はいくつあるか。
 
 ## 計算量
-多分クエリあたり $O(logN + H)$ ($H$ は座標の最大値のビット長)
+`add_point`: $O(1)$
+`build`: $O(N \log N + NH)$
+`query`: $O(\log N + H)$ ($H$ は座標の最大値のビット長)
 
 ## 解法
 前準備として以下を行う:
