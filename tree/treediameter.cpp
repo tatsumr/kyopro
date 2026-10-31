@@ -1,3 +1,4 @@
+// https://github.com/tatsumr/kyopro/blob/main/tree/treediameter.cpp
 template <class T>
 pair<T, vector<int>> TreeDiameter(StaticGraph<T> &g) {
     auto d1 = Dijkstra(g, 0);
