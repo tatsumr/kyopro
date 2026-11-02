@@ -22,4 +22,8 @@ void argument_sort(vector<Point<T>>)
 - 原点 $(0,~0)$ は存在しない前提で組まれている。ある場合の挙動は未調査
 - 偏角が等しい点の並び順は予測不可能。
 #### 仕組み
-[こちら](https://atcoder.jp/contests/abc442/editorial/15136)を参考にした。ベクトル $\overrightarrow{a}$ 外積 $a
+- 参考: [ABC442-E の解説](https://atcoder.jp/contests/abc442/editorial/15136)
+- ベクトル $\overrightarrow{a},~\overrightarrow{b}$ の外積 $\overrightarrow{a} \times \overrightarrow{b}$ の正負は、 $\overrightarrow{a}$ から $\overrightarrow{b}$ へ $180 \degree$ 以内で回るときの向きを表している
+- よって基本的には $\overrightarrow{a} \times \overrightarrow{b} \gt 0$ のときは $a$ → $b$ の順に並べるとよい
+- ただ、例えば $\overrightarrow{b}$ の偏角が $350 \degree$ 、 $\overrightarrow{a}$ の偏角が $10 \degree$ のときのように $0 \degree$ をまたぐとうまくいかない
+- そこで、点を上下の半平面で分けてから比較する
