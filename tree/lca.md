@@ -10,7 +10,7 @@ LCA(vector<vector<int>> g, int root = 0)
 ```
 木の隣接リスト `g` 、根 `root` で初期化。`root` は 0-indexed。
 #### 計算量
-$O(NlogN)$
+$O(N \log N)$
 
 ### query
 ```cpp
