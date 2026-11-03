@@ -15,7 +15,7 @@ T cross(Point<T> a, Point<T> b)
 
 ### argument_sort
 ```cpp
-void argument_sort(vector<Point<T>>)
+void argument_sort(vector<Point<T>> ps)
 ```
 点列 `ps` を偏角ソートする。 $x$ 軸の正の方向からの偏角が小さい順に点が並ぶようにする。
 #### 注意点
