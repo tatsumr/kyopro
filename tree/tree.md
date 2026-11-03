@@ -31,9 +31,8 @@ $O(\log N)$
 ```cpp
 int la(int v, int k)
 ```
-`v` の `k` 個上の祖先の頂点番号を返す（Level Ancestor）。（ `k=0` なら `v` 自身、 `k=1` なら `v` の親）
-
-`k` 個上の祖先が `root` より上の場合は、 `root` を返す。
+- `v` の `k` 個上の祖先の頂点番号を返す（Level Ancestor）。（ `k=0` なら `v` 自身、 `k=1` なら `v` の親）
+- `k` 個上の祖先が `root` より上の場合は、 `root` を返す。
 #### 制約
 - $0 \le v \lt N$
 - $k \ge 0$
