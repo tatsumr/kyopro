@@ -66,7 +66,7 @@ struct Tree {
     int la(int v, int k) const {
         assert(0 <= v && v < n);
         assert(0 <= k);
-        if (k >= n) return root;
+        if (k >= dep(v)) return root;
         int res = v;
         for (int j = 0; j < lg; j++) {
             if (k & (1LL << j)) {
