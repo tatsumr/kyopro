@@ -1,3 +1,4 @@
+// https://github.com/tatsumr/kyopro/blob/main/tree/tree.cpp
 template <class T>
 struct Tree {
     int n, root;
