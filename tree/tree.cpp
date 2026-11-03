@@ -1,18 +1,18 @@
 template <class T>
 struct Tree {
-  private:
-    int n;
+    int n, root;
     StaticGraph<T> g;
-    vector<vector<int>> parent;
     vector<int> depth;
     vector<T> distance;
-    int root;
+    int lg;
+    vector<vector<int>> parent;
     
     void build() {
+        lg = (n == 1 ? 1 : 32 - __builtin_clz(n - 1));
+        parent.assign(n, vector<int>(lg, root));
         queue<int> q;
+        q.emplace(root);
         depth[root] = 0;
-        distance[root] = T(0);
-        q.push(root);
         while (!q.empty()) {
             int v = q.front();
             q.pop();
@@ -23,20 +23,23 @@ struct Tree {
                     depth[nv] = depth[v] + 1;
                     distance[nv] = distance[v] + d;
                     parent[nv][0] = v;
-                    q.push(nv);
+                    q.emplace(nv);
                 }
             }
         }
-        for (int j = 1; j < 30; j++) {
-            for (int i = 0; i < n; i++) {
+        for (int j = 1; j < lg; ++j) {
+            for (int i = 0; i < n; ++i) {
                 parent[i][j] = parent[parent[i][j - 1]][j - 1];
             }
         }
     }
     
-  public:
     Tree() {}
-    Tree(StaticGraph<T> &g_, int root_ = 0) :n(g_.size()), g(g_), parent(n, vector<int>(30)), depth(n, -1), distance(n, -1LL), root(root_) {
+    Tree(StaticGraph<T> &_g, int _root = 0) :
+        n(_g.size()), root(_root), g(_g), 
+        depth(_g.size(), -1), distance(_g.size(), T(0)) 
+    {   
+        assert(0 <= root && root < n);
         build();
     }
     
@@ -50,7 +53,7 @@ struct Tree {
         if (u == v) {
             return u;
         }
-        for (int j = 29; j >= 0; j--) {
+        for (int j = lg - 1; j >= 0; --j) {
             if (parent[u][j] != parent[v][j]) {
                 u = parent[u][j];
                 v = parent[v][j];
@@ -61,9 +64,11 @@ struct Tree {
     
     int la(int v, int k) const {
         assert(0 <= v && v < n);
+        assert(0 <= k);
+        if (k >= n) return root;
         int res = v;
-        for (int j = 0; j < 30; j++) {
-            if (k & (1 << j)) {
+        for (int j = 0; j < lg; j++) {
+            if (k & (1LL << j)) {
                 res = parent[res][j];
             }
         }
