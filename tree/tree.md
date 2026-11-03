@@ -2,13 +2,7 @@
 コード: [tree/tree.cpp](https://github.com/tatsumr/kyopro/blob/main/tree/tree.cpp)
 
 ## 概要
-根付き木に関する様々な情報（LCAや頂点間の距離など）を知りたい時に使える。
-
-## 計算量
-木の頂点数を $N$ とする。
-- コンストラクタ: $O(N \log N)$
-- lca, la, jump, dist: $O(\log N)$
-- par, dep: $O(1)$
+根付き木に関する様々な情報（LCAや頂点間の距離など）を知りたい時に使える。内部では BFS とダブリングをしている。
 
 ## 使い方
 以下、木の頂点数を $N$ とする。
