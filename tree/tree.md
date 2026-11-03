@@ -48,8 +48,8 @@ int jump(int u, int v, int i)
 `u` - `v` パスを $x_0, x_1, ..., x_k$ としたときの $x_i$ を返す。`i` が $k$ より大きい時は `-1` を返す。0-indexed であることに注意。
 - "jump" は [Library Checker](https://judge.yosupo.jp/problem/jump_on_tree) で Jump on Tree と名付けられていることに由来する。
 #### 制約
-$0 \le u,~v \lt N$
-$i \ge 0$
+- $0 \le u,~v \lt N$
+- $i \ge 0$
 #### 計算量
 $O(\log N)$
 
