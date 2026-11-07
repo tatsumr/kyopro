@@ -62,7 +62,7 @@ struct RangeTree {
         int st = start[v - 1], ed = start[v];
         int il = lower_bound(yxs.begin() + st, yxs.begin() + ed, Point(yl, MN)) - yxs.begin();
         int ir = lower_bound(yxs.begin() + st, yxs.begin() + ed, Point(yr, MN)) - yxs.begin();
-        return __sum(v, ir - st, st) - __sum(v, il - st, st);
+        return __sum(ir - st, st) - __sum(il - st, st);
     }
 
   public:
