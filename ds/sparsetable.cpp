@@ -1,3 +1,4 @@
+// https://github.com/tatsumr/kyopro/blob/main/ds/sparsetable.cpp
 template <class S, S (*op)(S, S), S (*e)()>
 struct SparseTable {
     int N, K;
