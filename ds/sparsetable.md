@@ -19,7 +19,7 @@ SparseTable<S, op, e>(vector<S> A)
 ```cpp
 S prod(int l, int r)
 ```
-区間 $A_l,~A_{l+1},~A_{r-1}$ の区間クエリに答える。 $l=r$ のときは `e()` を返す。
+半開区間 $[l,~r)$ の集約値を返す。 $l=r$ のときは `e()` を返す。
 #### 制約
 $0 \le l \le r \le N$
 #### 計算量
