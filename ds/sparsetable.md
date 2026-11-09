@@ -1,5 +1,7 @@
 # Sparse Table
 ## 概要
+コード: [ds/sparsetable.cpp](https://github.com/tatsumr/kyopro/blob/main/ds/sparsetable.cpp)
+
 更新のない列に対する区間クエリ（min や gcd など）を高速に処理するデータ構造。冪等なモノイドを乗せることができる。
 
 実装に関するメモは、 [tree/lca.md](https://github.com/tatsumr/kyopro/blob/main/tree/lca.md) に書かれている。
@@ -22,3 +24,6 @@ S prod(int l, int r)
 $0 \le l \le r \le N$
 #### 計算量
 $O(1)$
+
+## 参考資料
+[AALのスパーステーブルの記事](https://info.atcoder.jp/entry/algorithm_lectures/sparse_table)
