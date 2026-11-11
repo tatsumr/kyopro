@@ -14,7 +14,7 @@ DPテーブルを構築する。
 - グラフの辺のコストの型 `E`
 - 部分木の集約値どうしを集約する関数 `merge`
 - 辺のコストなどを追加する関数 `add_edge`
-- ある頂点について、子の集約値たちを集約した後、その頂点の情報を追加する関数 `add_node`
+- 子の部分木の集約値たちを集約した後、親頂点の情報を追加する関数 `add_node`
 - `merge` の単位元 `id`
 - [Static Graph](https://github.com/tatsumr/kyopro/blob/main/graph/staticgraph.md) `g` 
 
