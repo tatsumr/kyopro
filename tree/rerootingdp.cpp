@@ -1,7 +1,6 @@
 // https://github.com/tatsumr/kyopro/blob/main/tree/rerootingdp.cpp
 template <class T, class E, T (*merge)(T, T), T (*add_edge)(Edge<E>, T), T (*add_node)(int, T), T (*id)()>
 struct RerootingDP {
-    private:
     int n;
     StaticGraph<E> g;
     vector<vector<T>> dp, l, r;
@@ -42,7 +41,6 @@ struct RerootingDP {
         }
     }
     
-    public:
     RerootingDP(StaticGraph<E> &g_) : n(g_.size()), g(g_), dp(n), l(n), r(n) {
         for (int i = 0; i < n; i++) {
             dp[i].resize(g[i].size());
