@@ -23,7 +23,7 @@ $dp_v := 頂点vの部分木に関するDPの値$ とすると、 $dp_v$ は `ad
 - $dp_{c_i}$ に、辺 $e_i(v,~c_i)$ の情報を追加する。
   - $x_i = \verb|add_edge|(e_i, dp_{c_i})$
 - 各子の情報を統合する。
-  - $y = merge(x_1,x_2,...,x_k)$
+  - $y = \verb|merge|(x_1,x_2,...,x_k)$
 - 統合した値に頂点 $v$ の情報を追加する。
   - $dp_v = \verb|add_node|(v, y)$
 
