@@ -7,5 +7,6 @@
 ## 使い方
 ### コンストラクタ
 ```cpp
-RerootingDP<T, E, merge, add_edge, add_node, id>
+RerootingDP<T, E, merge, add_edge, add_node, id> rd(StaticGraph<T> g)
 ```
+[Static Graph](https://github.com/tatsumr/kyopro/blob/main/graph/staticgraph.md) `g` で構築。
