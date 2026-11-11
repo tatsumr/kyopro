@@ -9,4 +9,14 @@
 ```cpp
 RerootingDP<T, E, merge, add_edge, add_node, id> rd(StaticGraph<T> g)
 ```
-[Static Graph](https://github.com/tatsumr/kyopro/blob/main/graph/staticgraph.md) `g` で構築。
+DPテーブルを構築する。
+- DPテーブルの値の型 `T`
+- グラフの辺のコストの型 `E`
+- 部分木の集約値どうしを集約する関数 `merge`
+- 辺のコストなどを追加する関数 `add_edge`
+- ある頂点について、子の集約値たちを集約した後、その頂点の情報を追加する関数 `add_node`
+- `merge` の単位元 `id`
+- [Static Graph](https://github.com/tatsumr/kyopro/blob/main/graph/staticgraph.md) `g` 
+
+## 使用例
+### [EDPC-V](https://atcoder.jp/contests/dp/tasks/dp_v)
