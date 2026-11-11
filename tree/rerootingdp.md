@@ -20,12 +20,12 @@ DPテーブルを構築する。
 
 $dp_v := 頂点~v~の部分木に関するDPの値$ とすると、 $dp_v$ は `add_edge` → `merge` → `add_node` の順に関数が適用されて求まるイメージである。
 - $v$ の子を $c_1,c_2,...,c_k$ とする。
-- $dp_c_i$ に、辺 $e_i(v,~c_i)$ の情報を追加する。
-  - $x_i = add_edge(e_i, dp_c_i)$
+- $dp_{c_i}$ に、辺 $e_i(v,~c_i)$ の情報を追加する。
+  - $x_i = add\_edge(e_i, dp_{c_i})$
 - 各子の情報を統合する。
   - $y = merge(x_1,x_2,...,x_k)$
 - 統合した値に頂点 $v$ の情報を追加する。
-  - $dp_v = add_node(v, y)$
+  - $dp_v = add\_node(v, y)$
 
 ## 使用例
 ### [EDPC-V. Subtree](https://atcoder.jp/contests/dp/tasks/dp_v)
