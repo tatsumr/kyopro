@@ -27,5 +27,11 @@ $dp_v := 頂点vの部分木に関するDPの値$ とすると、 $dp_v$ は `ad
 - 統合した値に頂点 $v$ の情報を追加する。
   - $dp_v = \verb|add_node|(v, y)$
 
+### メンバ変数 dp
+```cpp
+vector<vector<T>> rd.dp
+```
+$dp_{v,~i}:= 頂点vからi番目に出ている辺の先にいる頂点の部分木に関するDPの値$ である。辺の情報は含まれていない。
+
 ## 使用例
 ### [EDPC-V. Subtree](https://atcoder.jp/contests/dp/tasks/dp_v)
