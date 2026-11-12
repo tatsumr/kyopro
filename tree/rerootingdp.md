@@ -35,14 +35,14 @@ $dp_v := 頂点vの部分木に関するDPの値$ とすると、 $dp_v$ は `ad
 T get(int v)
 ```
 頂点 `v` を根としたときのDPの値を返す。
+### 計算量
+`v` の次数を $deg(v)$ として $O(deg(v))$ (`merge`, `add_edge`, `add_node`, `id` の計算量を $O(1)$ と仮定)
 
 ### メンバ変数 dp
 ```cpp
 vector<vector<T>> dp
 ```
 $dp_{v,~i}:= 頂点vからi番目に出ている辺の先にいる頂点の部分木に関するDPの値$ 。辺の情報は含まれていない。
-### 計算量
-`v` の次数を $deg(v)$ として $O(deg(v))$ (`merge`, `add_edge`, `add_node`, `id` の計算量を $O(1)$ と仮定)
 
 ## 使用例
 ### [EDPC-V. Subtree](https://atcoder.jp/contests/dp/tasks/dp_v)
