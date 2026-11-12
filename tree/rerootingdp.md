@@ -13,8 +13,8 @@ DPテーブルを構築する。
 - DPテーブルの値の型 `T`
 - グラフの辺のコストの型 `E`
 - 子の集約値どうしを統合する関数 `T merge(T a, T b)`
-- 辺のコストなどを追加する関数 `T add_edge(Edge<E> e, T a)`
-- 子の部分木の集約値たちを統合した後、親頂点の情報を追加する関数 `T add_node(int v, T a)`
+- 辺のコストなどを追加する関数 `T add_edge(Edge<E> e, T x)`
+- 子の部分木の集約値たちを統合した後、親頂点の情報を追加する関数 `T add_node(int v, T x)`
 - `merge` の単位元 `T id()`
 - [Static Graph](https://github.com/tatsumr/kyopro/blob/main/graph/staticgraph.md) `g` 
 
@@ -73,8 +73,8 @@ using E = long long;
 lint N, M;
 
 T merge(T a, T b) { return (a * b) % M;}
-T add_edge(Edge<E> e, T a) { return (a + 1) % M; }
-T add_node(int v, T a) { return a; }
+T add_edge(Edge<E> e, T x) { return (x + 1) % M; }
+T add_node(int v, T x) { return x; }
 T id() { return 1; }
 
 int main() {
