@@ -109,7 +109,7 @@ int main() {
     }
 }
 ```
-$f(v):= v$ の部分木について、 $v$ を始点としたときの旅費の最大値(ただし $v$ が終点の場合も含む) としている。 `get(v)` を呼ぶと `add_node(v)` が適用されて $D[v]$ が非常に大きい場合に $v$ が始点かつ終点の場合が答えになってしまう点に注意。
+$f(v):= v$ の部分木について、 $v$ を始点としたときの旅費の最大値(ただし $v$ が終点の場合も含む) とすると、各始点に対する答えは main 関数内で上のような処理をすることで求められる。 `get(v)` を呼ぶと `add_node(v)` が適用されて $D[v]$ が非常に大きい場合に $v$ が始点かつ終点の場合が答えになってしまう点に注意。
 
 ### [ABC160-F. Distributing Integes](https://atcoder.jp/contests/abc160/tasks/abc160_f)
 ### [Library Checker-Tree Path Composite Sum](https://judge.yosupo.jp/problem/tree_path_composite_sum)
