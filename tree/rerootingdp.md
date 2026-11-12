@@ -99,7 +99,7 @@ T add_node(int v, T x) { return max(x, D[v]); }
 T id() { return 0; }
 
 int main() {
-    RerootingDP<lint, lint, merge, add_edge, add_node, id> rd(g);
+    RerootingDP<T, E, merge, add_edge, add_node, id> rd(g);
     for (int v = 0; v < N; v++) {
         T ans = id();
         for (int i = 0; i < g[v].size(); i++) {
