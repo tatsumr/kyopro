@@ -47,18 +47,38 @@ $dp[v][i]:=$ 頂点 $v$ から $i$ 番目に出ている辺の先にいる頂点
 ## 使用例
 どんな関数を乗せるかは、一旦根を1つ決めて、 $f(v):=v$ の部分木に関するDPの値 という普通の木DPを考えると分かりやすい。
 
-### [EDPC-V. Subtree](https://atcoder.jp/contests/dp/tasks/dp_v)
+### 木の直径
 ```cpp
-using lint = long long;
-lint N, M;
-
-lint merge(lint a, lint b) { return (a * b) % M;}
-lint add_edge(Edge<lint> e, lint a) { return (a + 1) % M; }
-lint add_node(int v, lint a) { return a; }
-lint id() { return 1; }
+using T = long long;
+using E = long long;
+T merge(T a, T b) { return max(a, b); }
+T add_edge(Edge<E> e, T x) { return x + e.cost; }
+T add_node(int v, T x) { return x; }
+T id() { return 0; }
 
 int main() {
-    RerootingDP<lint, lint, merge, add_edge, add_node, id> rd(g);
+    RerootingDP<T, E, merge, add_edge, add_node, id> rd(g);
+    T diameter = 0;
+    for (int i = 0; i < g.size(); i++) {
+        diameter = max(diameter, rd.get(i));
+    }
+}
+```
+木の直径(最長パスの長さ)を全方位木DPで求めるとこのようになる。
+
+### [EDPC-V. Subtree](https://atcoder.jp/contests/dp/tasks/dp_v)
+```cpp
+using T = long long;
+using E = long long;
+lint N, M;
+
+T merge(T a, T b) { return (a * b) % M;}
+T add_edge(Edge<E> e, T a) { return (a + 1) % M; }
+T add_node(int v, T a) { return a; }
+T id() { return 1; }
+
+int main() {
+    RerootingDP<T, E, merge, add_edge, add_node, id> rd(g);
     for (int i = 0; i < N; i++) {
         cout << rd.get(i) << "\n";
     }
