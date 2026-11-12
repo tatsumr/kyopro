@@ -112,6 +112,46 @@ int main() {
 $f(v):= v$ の部分木について、 $v$ を始点としたときの旅費の最大値(ただし $v$ が終点の場合も含む) とすると、各始点に対する答えは main 関数内で上のような処理をすることで求められる。 `get(v)` を呼ぶと `add_node(v)` が適用されて $D[v]$ が非常に大きい場合に $v$ が始点かつ終点の場合が答えになってしまう点に注意。
 
 ### [ABC160-F. Distributing Integes](https://atcoder.jp/contests/abc160/tasks/abc160_f)
+```cpp
+#include <atcoder/modint>
+using mint = atcoder::modint1000000007;
+
+const int MAX = 200010;
+mint fac[MAX], finv[MAX], inv[MAX];
+
+void combinit() {
+    const int MOD = mint::mod();
+    fac[0] = fac[1] = 1;
+    finv[0] = finv[1] = 1;
+    inv[1] = 1;
+    for (int i = 2; i < MAX; i++){
+        fac[i] = fac[i - 1] * i;
+        inv[i] = MOD - inv[MOD % i] * (MOD / i);
+        finv[i] = finv[i - 1] * inv[i];
+    }
+}
+
+struct T {
+    mint sum;
+    int sz;
+    T() : sum(0), sz(0) {}
+    T(mint _sum, int _sz) : sum(_sum), sz(_sz) {}
+};
+using E = int;
+
+T merge(T a, T b) { return T(a.sum * b.sum, a.sz + b.sz); }
+T add_edge(Edge<E> e, T x) { return T(x.sum * finv[x.sz], x.sz); }
+T add_node(int v, T x) { return T(x.sum * fac[x.sz], x.sz + 1); }
+T id() { return T(1, 0); }
+
+int main() {
+    RerootingDP<T, E, merge, add_edge, add_node, id> rd(g);
+    for (int i = 0; i < N; i++) {
+        cout << rd.get(i).sum.val() << "\n";
+    }
+}
+```
+
 ### [Library Checker-Tree Path Composite Sum](https://judge.yosupo.jp/problem/tree_path_composite_sum)
 ```cpp
 #include <atcoder/modint>
