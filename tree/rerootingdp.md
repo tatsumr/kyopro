@@ -45,10 +45,10 @@ vector<vector<T>> dp
 $dp[v][i]:= 頂点vからi番目に出ている辺の先にいる頂点の部分木に関するDPの値$ 。辺の情報は含まれていない。
 
 ## 使用例
-どんな関数を乗せるかは、一旦根を1つ決めて、 $f(v):=vの部分木に関するDPの値$ という普通の木DPを考えると見通しがよい。
+どんな関数を乗せるかは、一旦根を1つ決めて、 $f(v):=vの部分木に関するDPの値$ という普通の木DPを考えると分かりやすい。
 
 ### [EDPC-V. Subtree](https://atcoder.jp/contests/dp/tasks/dp_v)
+### [ABC361-E. Tree and Hamilton Path 2](https://atcoder.jp/contests/abc361/tasks/abc361_e)
 ### [ABC222-F. Expensive Expense](https://atcoder.jp/contests/abc222/tasks/abc222_f)
 ### [ABC160-F. Distributing Integes](https://atcoder.jp/contests/abc160/tasks/abc160_f)
-### [AB361-E. Tree and Hamilton Path 2](https://atcoder.jp/contests/abc361/tasks/abc361_e)
-### [Library Checker. Tree Path Composite Sum](https://judge.yosupo.jp/problem/tree_path_composite_sum)
+### [Library Checker-Tree Path Composite Sum](https://judge.yosupo.jp/problem/tree_path_composite_sum)
