@@ -113,3 +113,33 @@ $f(v):= v$ の部分木について、 $v$ を始点としたときの旅費の�
 
 ### [ABC160-F. Distributing Integes](https://atcoder.jp/contests/abc160/tasks/abc160_f)
 ### [Library Checker-Tree Path Composite Sum](https://judge.yosupo.jp/problem/tree_path_composite_sum)
+```cpp
+#include <atcoder/modint>
+using mint = atcoder::modint998244353;
+
+const int MX = 200010;
+long long A[MX];
+
+struct T {
+    mint sum, sz;
+    T() : sum(0), sz(0) {}
+    T(mint _sum, mint _sz) : sum(_sum), sz(_sz) {}
+};
+using E = pair<mint, mint>;
+
+T merge(T a, T b) { return T(a.sum + b.sum, a.sz + b.sz); }
+T add_edge(Edge<E> e, T x) {
+    auto [b, c] = e.cost;
+    return T(b * x.sum + c * x.sz, x.sz);
+}
+T add_node(int v, T x) { return T(x.sum + A[v], x.sz + 1); }
+T id() { return T(0, 0); }
+
+int main() {
+    RerootingDP<T, E, merge, add_edge, add_node, id> rd(g);
+    for (int i = 0; i < N; i++) {
+        cout << rd.get(i).sum.val() << " ";
+    }
+    cout << "\n";
+}
+```
