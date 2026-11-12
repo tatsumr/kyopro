@@ -46,3 +46,7 @@ $dp_{v,~i}:= 頂点vからi番目に出ている辺の先にいる頂点の部�
 
 ## 使用例
 ### [EDPC-V. Subtree](https://atcoder.jp/contests/dp/tasks/dp_v)
+### [ABC222-F. Expensive Expense](https://atcoder.jp/contests/abc222/tasks/abc222_f)
+### [ABC160-F. Distributing Integes](https://atcoder.jp/contests/abc160/tasks/abc160_f)
+### [AB361-E. Tree and Hamilton Path 2](https://atcoder.jp/contests/abc361/tasks/abc361_e)
+### [Library Checker. Tree Path Composite Sum](https://judge.yosupo.jp/problem/tree_path_composite_sum)
