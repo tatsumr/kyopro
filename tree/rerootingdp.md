@@ -68,10 +68,10 @@ int main() {
 
 ### [EDPC-V. Subtree](https://atcoder.jp/contests/dp/tasks/dp_v)
 ```cpp
-using T = long long;
-using E = long long;
 lint N, M;
 
+using T = long long;
+using E = long long;
 T merge(T a, T b) { return (a * b) % M;}
 T add_edge(Edge<E> e, T x) { return (x + 1) % M; }
 T add_node(int v, T x) { return x; }
@@ -87,5 +87,29 @@ int main() {
 $f(v):= v$ の部分木について、 $v$ が黒色のときの通り数 とすると、部分木どうしのマージは掛け算すればよい。ただし、 $v$ の部分木の頂点が全部白色の場合も考慮する必要があるので、 `add_edge` の部分で +1 しておく。
 
 ### [ABC222-F. Expensive Expense](https://atcoder.jp/contests/abc222/tasks/abc222_f)
+```cpp
+const int MX = 200010;
+long long D[MX];
+
+using T = long long;
+using E = long long;
+T merge(T a, T b) { return max(a, b);}
+T add_edge(Edge<E> e, lint x) { return x + e.cost; }
+T add_node(int v, T x) { return max(x, D[v]); }
+T id() { return 0; }
+
+int main() {
+    RerootingDP<lint, lint, merge, add_edge, add_node, id> rd(g);
+    for (int v = 0; v < N; v++) {
+        T ans = id();
+        for (int i = 0; i < g[v].size(); i++) {
+            ans = merge(add_edge(g[v][i], rd.dp[v][i]), ans);
+        }
+        cout << ans << "\n";
+    }
+}
+```
+$f(v):= v$ の部分木について、 $v$ を始点としたときの旅費の最大値(ただし $v$ が終点の場合も含む) としている。 `get(v)` を呼ぶと `add_node(v)` が適用されて $D[v]$ が非常に大きい場合に $v$ が始点かつ終点の場合が答えになってしまう点に注意。
+
 ### [ABC160-F. Distributing Integes](https://atcoder.jp/contests/abc160/tasks/abc160_f)
 ### [Library Checker-Tree Path Composite Sum](https://judge.yosupo.jp/problem/tree_path_composite_sum)
