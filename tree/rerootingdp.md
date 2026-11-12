@@ -66,7 +66,6 @@ int main() {
 ```
 $f(v):= v$ の部分木について、 $v$ が黒色のときの通り数 とすると、部分木どうしのマージは掛け算すればよい。ただし、 $v$ の部分木の頂点が全部白色の場合も考慮する必要があるので、 `add_edge` の部分で +1 しておく。
 
-### [ABC361-E. Tree and Hamilton Path 2](https://atcoder.jp/contests/abc361/tasks/abc361_e)
 ### [ABC222-F. Expensive Expense](https://atcoder.jp/contests/abc222/tasks/abc222_f)
 ### [ABC160-F. Distributing Integes](https://atcoder.jp/contests/abc160/tasks/abc160_f)
 ### [Library Checker-Tree Path Composite Sum](https://judge.yosupo.jp/problem/tree_path_composite_sum)
