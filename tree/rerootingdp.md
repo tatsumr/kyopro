@@ -117,19 +117,9 @@ $f(v):= v$ の部分木について、 $v$ を始点としたときの旅費の�
 using mint = atcoder::modint1000000007;
 
 const int MAX = 200010;
-mint fac[MAX], finv[MAX], inv[MAX];
-
-void combinit() {
-    const int MOD = mint::mod();
-    fac[0] = fac[1] = 1;
-    finv[0] = finv[1] = 1;
-    inv[1] = 1;
-    for (int i = 2; i < MAX; i++){
-        fac[i] = fac[i - 1] * i;
-        inv[i] = MOD - inv[MOD % i] * (MOD / i);
-        finv[i] = finv[i - 1] * inv[i];
-    }
-}
+// fac[i] = (1 * 2 * ... * i) % MOD
+// finv[i] = (1/1 * 1/2 * ... * 1/i) % MOD
+mint fac[MAX], finv[MAX], inv[MAX]; 
 
 struct T {
     mint sum;
