@@ -18,14 +18,14 @@ DPテーブルを構築する。
 - `merge` の単位元 `T id()`
 - [Static Graph](https://github.com/tatsumr/kyopro/blob/main/graph/staticgraph.md) `g` 
 
-$dp_v := 頂点vの部分木に関するDPの値$ とすると、 $dp_v$ は `add_edge` → `merge` → `add_node` の順に関数が適用されて求まるイメージである。
+$f(v) := 頂点vの部分木に関するDPの値$ とすると、 $f(v)$ は `add_edge` → `merge` → `add_node` の順に関数が適用されて求まるイメージである。
 - $v$ の子を $c_1,c_2,...,c_k$ とする。
-- $dp_{c_i}$ に、辺 $e_i(v,~c_i)$ の情報を追加する。
-  - $x_i = \verb|add_edge|(e_i, dp_{c_i})$
+- $f(c_i)$ に、辺 $e_i(v,~c_i)$ の情報を追加する。
+  - $x_i = \verb|add_edge|(e_i, f(c_i))$
 - 各子の情報を統合する。
   - $y = \verb|merge|(x_1,x_2,...,x_k)$
 - 統合した値に頂点 $v$ の情報を追加する。
-  - $dp_v = \verb|add_node|(v, y)$
+  - $f(v) = \verb|add_node|(v, y)$
 
 #### 計算量
 木の頂点数を $N$ として $O(N)$ (`merge`, `add_edge`, `add_node`, `id` の計算量を $O(1)$ と仮定)
