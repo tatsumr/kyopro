@@ -118,7 +118,7 @@ using mint = atcoder::modint1000000007;
 
 const int MAX = 200010;
 // fac[i] = (1 * 2 * ... * i) % MOD
-// finv[i] = (1/1 * 1/2 * ... * 1/i) % MOD
+// finv[i] = (1 / fac[i]) % MOD
 mint fac[MAX], finv[MAX], inv[MAX]; 
 
 struct T {
@@ -141,6 +141,7 @@ int main() {
     }
 }
 ```
+$f(v):=v$ の部分木について、 $v$ に $1$ が書かれるときの整数の書き方の通り数 とする。
 
 ### [Library Checker-Tree Path Composite Sum](https://judge.yosupo.jp/problem/tree_path_composite_sum)
 ```cpp
