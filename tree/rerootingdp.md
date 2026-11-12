@@ -18,7 +18,7 @@ DPテーブルを構築する。
 - `merge` の単位元 `T id()`
 - [Static Graph](https://github.com/tatsumr/kyopro/blob/main/graph/staticgraph.md) `g` 
 
-$f(v) := 頂点vの部分木に関するDPの値$ とすると、 $f(v)$ は `add_edge` → `merge` → `add_node` の順に関数が適用されて求まるイメージである。
+根を固定して、 $f(v) := 頂点vの部分木に関するDPの値$ とすると、 $f(v)$ は `add_edge` → `merge` → `add_node` の順に関数が適用されて求まるイメージである。
 - $v$ の子を $c_1,c_2,...,c_k$ とする。
 - $f(c_i)$ に、辺 $e_i(v,~c_i)$ の情報を追加する。
   - $x_i = \verb|add_edge|(e_i, f(c_i))$
