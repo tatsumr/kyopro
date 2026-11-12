@@ -38,7 +38,7 @@ T get(int v)
 
 ### メンバ変数 dp
 ```cpp
-vector<vector<T>> rd.dp
+vector<vector<T>> dp
 ```
 $dp_{v,~i}:= 頂点vからi番目に出ている辺の先にいる頂点の部分木に関するDPの値$ 。辺の情報は含まれていない。
 ### 計算量
