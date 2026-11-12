@@ -94,7 +94,7 @@ long long D[MX];
 using T = long long;
 using E = long long;
 T merge(T a, T b) { return max(a, b);}
-T add_edge(Edge<E> e, lint x) { return x + e.cost; }
+T add_edge(Edge<E> e, T x) { return x + e.cost; }
 T add_node(int v, T x) { return max(x, D[v]); }
 T id() { return 0; }
 
