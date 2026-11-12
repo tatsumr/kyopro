@@ -42,9 +42,11 @@ T get(int v)
 ```cpp
 vector<vector<T>> dp
 ```
-$dp_{v,~i}:= 頂点vからi番目に出ている辺の先にいる頂点の部分木に関するDPの値$ 。辺の情報は含まれていない。
+$dp[v][i]:= 頂点vからi番目に出ている辺の先にいる頂点の部分木に関するDPの値$ 。辺の情報は含まれていない。
 
 ## 使用例
+どんな関数を乗せるかは、一旦根を1つ決めて、 $f(v):=vの部分木に関するDPの値$ という普通の木DPを考えると見通しがよい。
+
 ### [EDPC-V. Subtree](https://atcoder.jp/contests/dp/tasks/dp_v)
 ### [ABC222-F. Expensive Expense](https://atcoder.jp/contests/abc222/tasks/abc222_f)
 ### [ABC160-F. Distributing Integes](https://atcoder.jp/contests/abc160/tasks/abc160_f)
