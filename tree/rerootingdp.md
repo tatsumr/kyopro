@@ -147,7 +147,7 @@ $f(v):=v$ の部分木について、 $v$ に $1$ が書かれるときの整数
 
 よって、 $v$ の子を $c_1, c_2, ..., c_k$ 、頂点 $x$ の部分木のサイズを $sz(x)$ とすると、 $f(v)=\frac{(sz(c_1)+sz(c_2)+...+sz(c_k))!}{sz(c_1)!sz(c_2)!...sz(c_k)!}f(c_1)f(c_2)...f(c_k)=(sz(v)-1)!\frac{f(c_1)}{sz(c_1)!}\frac{f(c_2)}{sz(c_2)!}...\frac{f(c_k)}{sz(c_k)!}$
 
-以上のことから、DPする際には通り数と部分木のサイズの2つの情報を持たせるとよいことが分かる。 $\frac{1}{sz(c_i)!}$ をかける操作は `add_edge` のタイミングで行い、 $(sz(v)-1)!$ をかける操作は `add_node` のタイミングで行う。
+以上のことから、DPする際には通り数と部分木のサイズの2つの情報を持たせるとよいことが分かる。 $\frac{1}{sz(c_i)!}$ をかける操作は `add_edge` で行い、 $(sz(v)-1)!$ をかける操作は `add_node` で行う。
 
 ### [Library Checker-Tree Path Composite Sum](https://judge.yosupo.jp/problem/tree_path_composite_sum)
 ```cpp
