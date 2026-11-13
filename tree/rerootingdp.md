@@ -145,7 +145,7 @@ $f(v):=v$ の部分木について、 $v$ に $1$ が書かれるときの整数
 
 例えば $v$ の子が $3$ つで部分木のサイズがそれぞれ $2, 3, 5$ だとする。このとき、それぞれの子の部分木内で整数を書く順番を $1$ つ固定すると、 $f(v)$ は $[1, 1, 2, 2, 2, 3, 3, 3, 3, 3]$ の並び替えに等しく、 $\frac{10!}{2!3!5!}$ となる。
 
-よって、 $v$ の子を $c_1, c_2, ..., c_k$ 、頂点 $x$ の部分木のサイズを $sz(x)$ とすると、 $f(v)=\frac{(sz(c_1)+sz(c_2)+...+sz(c_k))!}{sz(c_1)!sz(c_2)!...sz(c_k)!}f(c_1)f(c_2)...f(c_k)=$
+よって、 $v$ の子を $c_1, c_2, ..., c_k$ 、頂点 $x$ の部分木のサイズを $sz(x)$ とすると、 $f(v)=\frac{(sz(c_1)+sz(c_2)+...+sz(c_k))!}{sz(c_1)!sz(c_2)!...sz(c_k)!}f(c_1)f(c_2)...f(c_k)=(sz(v)-1)!\frac{f(c_1)}{sz(c_1)!}\frac{f(c_2)}{sz(c_2)!}...\frac{f(c_k)}{sz(c_k)!}$
 
 ### [Library Checker-Tree Path Composite Sum](https://judge.yosupo.jp/problem/tree_path_composite_sum)
 ```cpp
